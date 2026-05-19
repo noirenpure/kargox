@@ -1569,8 +1569,6 @@ async function deleteKargo(id) {
   else if (activePage === 'page-musteridashboard') loadMusteriDashboard();
 }
 
-
-
 // ─── PROFESYONEL KARGO FİŞİ (YARIM A4 SADE TASARIM) ───
 async function printKargoFisi(id) {
   const { data: k } = await sb.from('kargolar').select('*').eq('id', id).single();
@@ -1586,42 +1584,18 @@ async function printKargoFisi(id) {
     <title>Kargo Fişi - ${k.tracking_no}</title>
     <style>
       @page {
-        size: A5 portrait; /* Yarım A4 boyutuna en yakın standart ölçü (148mm x 210mm) */
+        size: A5 portrait; 
         margin: 12mm;
       }
-      
       *, *::before, *::after { box-sizing: border-box; }
-      
-      body {
-        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-        color: #111;
-        margin: 0;
-        padding: 0;
-        font-size: 10pt;
-        line-height: 1.4;
-      }
-      
-      /* Üst Logo ve Başlık Alanı */
-      .header-table {
-        width: 100%; border-collapse: collapse; margin-bottom: 5px;
-      }
+      body { font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #111; margin: 0; padding: 0; font-size: 10pt; line-height: 1.4; }
+      .header-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
       .logo-text { font-size: 24pt; letter-spacing: -0.5px; color: #000; }
       .logo-text strong { font-weight: 900; }
       .logo-text span { font-weight: 300; color: #333; padding-left: 2px; }
-      
-      /* Takip No ve Tarih Alanı */
-      .meta-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        border-bottom: 2px solid #000;
-        padding-bottom: 8px;
-        margin-bottom: 20px;
-      }
+      .meta-container { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 20px; }
       .tracking-number { font-size: 12pt; font-weight: bold; color: #333; }
       .header-meta { font-size: 8.5pt; color: #444; text-align: right; }
-      
-      /* Adresler Bölümü */
       .address-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
       .address-cell { width: 50%; vertical-align: top; border: 1px solid #111; padding: 12px; }
       .address-cell.receiver { border-left: none; background-color: #fafafa; }
@@ -1629,11 +1603,7 @@ async function printKargoFisi(id) {
       .name-field { font-size: 10.5pt; font-weight: bold; margin-bottom: 4px; }
       .address-field { font-size: 9pt; color: #222; min-height: 40px; }
       .phone-field { font-weight: bold; margin-top: 6px; font-size: 9pt; }
-      
-      /* Açıklama Alanı */
       .notes-box { border: 1px dashed #444; padding: 10px; font-size: 8.5pt; margin-bottom: 30px; }
-      
-      /* Sayfa Altı Ödeme Bilgileri Alanı */
       .payment-wrapper { border-top: 2px solid #000; padding-top: 12px; margin-top: 20px; }
       .payment-table { width: 100%; border-collapse: collapse; }
       .payment-info-cell { vertical-align: middle; }
@@ -1642,25 +1612,17 @@ async function printKargoFisi(id) {
       .payment-amount-cell { text-align: right; vertical-align: middle; }
       .payment-amount-title { font-size: 8pt; font-weight: bold; text-transform: uppercase; color: #555; }
       .payment-amount-value { font-size: 18pt; font-weight: 900; color: #000; }
-      
       .footer-notice { text-align: center; font-size: 7pt; color: #777; margin-top: 15px; }
     </style>
     </head>
     <body>
       <table class="header-table">
-        <tr>
-          <td class="logo-text"><strong>EFE</strong><span>KARGO</span></td>
-        </tr>
+        <tr><td class="logo-text"><strong>EFE</strong><span>KARGO</span></td></tr>
       </table>
-
       <div class="meta-container">
         <div class="tracking-number">Takip No: ${k.tracking_no}</div>
-        <div class="header-meta">
-          Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>
-          Otomasyon Fişi
-        </div>
+        <div class="header-meta">Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>Otomasyon Fişi</div>
       </div>
-
       <table class="address-table">
         <tr>
           <td class="address-cell">
@@ -1677,11 +1639,7 @@ async function printKargoFisi(id) {
           </td>
         </tr>
       </table>
-
-      <div class="notes-box">
-        <strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama || 'Belirtilmedi'}
-      </div>
-
+      <div class="notes-box"><strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama || 'Belirtilmedi'}</div>
       <div class="payment-wrapper">
         <table class="payment-table">
           <tr>
@@ -1690,22 +1648,13 @@ async function printKargoFisi(id) {
               <div class="payment-status-value">${k.odeme_tipi === 'evet' ? 'KAPIDA ÖDEME (TAHSİLATLI)' : 'ÖDEME YOK (DİREKT TESLİM)'}</div>
             </td>
             <td class="payment-amount-cell">
-              ${k.odeme_tipi === 'evet' ? `
-                <div class="payment-amount-title">Tahsil Edilecek Tutar</div>
-                <div class="payment-amount-value">${parseFloat(k.ucret || 0).toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div>
-              ` : ''}
+              ${k.odeme_tipi === 'evet' ? `<div class="payment-amount-title">Tahsil Edilecek Tutar</div><div class="payment-amount-value">${parseFloat(k.ucret || 0).toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div>` : ''}
             </td>
           </tr>
         </table>
-        
-        <div class="footer-notice">
-          Efe Kargo Lojistik Otomasyon Sistemi
-        </div>
+        <div class="footer-notice">Efe Kargo Lojistik Otomasyon Sistemi</div>
       </div>
-      
-      <script>
-        window.onload = function() { window.print(); window.close(); }
-      </script>
+      <script>window.onload = function() { window.print(); window.close(); }<\/script>
     </body>
     </html>
   `);
@@ -1714,3 +1663,4 @@ async function printKargoFisi(id) {
 </script>
 </body>
 </html>
+
