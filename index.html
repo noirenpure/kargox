@@ -41,229 +41,65 @@ body {
   font-size: 14px;
   min-height: 100vh;
 }
-/* ── KUSURSUZ SEÇİM KUTULARI (Tüm Alandan Tıklanabilir) ── */
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231A3A2A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-  background-repeat: no-repeat !important;
-  background-position: right 12px center !important;
-  background-size: 16px !important;
-  padding-right: 36px !important;
-  cursor: pointer;
-}
-select::-ms-expand { 
-  display: none; 
-}
 
 /* ── CONFIG MODAL ── */
-#config-modal {
-  position: fixed; inset: 0;
-  background: rgba(10,10,8,0.7);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 9999;
-}
-.config-box {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  width: 480px;
-  max-width: 95vw;
-}
+#config-modal { position: fixed; inset: 0; background: rgba(10,10,8,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+.config-box { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; width: 480px; max-width: 95vw; }
 .config-box h2 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
 .config-box p { color: var(--text2); margin-bottom: 1.5rem; font-size: 13px; line-height: 1.6; }
 .config-box label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 4px; }
-.config-box input {
-  width: 100%; padding: 9px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 13px; font-family: 'DM Mono', monospace;
-  margin-bottom: 1rem;
-  background: var(--bg);
-  color: var(--text);
-  outline: none;
-}
+.config-box input { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; margin-bottom: 1rem; background: var(--bg); color: var(--text); outline: none; }
 .config-box input:focus { border-color: var(--accent-mid); }
-.config-note {
-  background: var(--info-light);
-  border: 1px solid #B5D4F4;
-  border-radius: var(--radius);
-  padding: 10px 14px;
-  font-size: 12px;
-  color: var(--info);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-.config-note code {
-  font-family: 'DM Mono', monospace;
-  background: rgba(255,255,255,0.6);
-  padding: 1px 4px;
-  border-radius: 4px;
-}
+.config-note { background: var(--info-light); border: 1px solid #B5D4F4; border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: var(--info); margin-bottom: 1.5rem; line-height: 1.6; }
+.config-note code { font-family: 'DM Mono', monospace; background: rgba(255,255,255,0.6); padding: 1px 4px; border-radius: 4px; }
 
 /* ── AUTH ── */
-#auth-screen {
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--bg);
-}
-.auth-card {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  padding: 2.5rem;
-  width: 420px;
-  max-width: 95vw;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-}
-.auth-logo {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 2rem;
-}
-.auth-logo-icon {
-  width: 38px; height: 38px;
-  background: var(--accent);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-}
+#auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg); }
+.auth-card { background: var(--surface); border-radius: var(--radius-lg); padding: 2.5rem; width: 420px; max-width: 95vw; box-shadow: var(--shadow); border: 1px solid var(--border); }
+.auth-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
+.auth-logo-icon { width: 38px; height: 38px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
 .auth-logo-icon svg { width: 20px; height: 20px; fill: white; }
 .auth-logo span { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
 .auth-logo sub { font-size: 11px; color: var(--text3); display: block; line-height: 1; }
-.auth-tabs {
-  display: flex; gap: 4px;
-  background: var(--surface2);
-  padding: 4px;
-  border-radius: var(--radius);
-  margin-bottom: 1.5rem;
-}
-.auth-tab {
-  flex: 1; padding: 7px 12px;
-  border: none; background: none;
-  border-radius: 7px;
-  font-size: 13px; font-weight: 500; cursor: pointer;
-  color: var(--text2);
-  transition: all 0.15s;
-}
+.auth-tabs { display: flex; gap: 4px; background: var(--surface2); padding: 4px; border-radius: var(--radius); margin-bottom: 1.5rem; }
+.auth-tab { flex: 1; padding: 7px 12px; border: none; background: none; border-radius: 7px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text2); transition: all 0.15s; }
 .auth-tab.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 .form-group { margin-bottom: 14px; }
 .form-group label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 5px; }
-.form-group input, .form-group select, .form-group textarea {
-  width: 100%; padding: 9px 12px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  font-size: 13px; font-family: 'DM Sans', sans-serif;
-  background: var(--bg); color: var(--text);
-  outline: none; transition: border-color 0.15s;
-}
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-  border-color: var(--accent-mid);
-  background: var(--surface);
-}
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-mid); background: var(--surface); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.btn {
-  width: 100%; padding: 10px;
-  border: none; border-radius: var(--radius);
-  font-size: 14px; font-weight: 500; cursor: pointer;
-  transition: all 0.15s;
-}
+.btn { width: 100%; padding: 10px; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
 .btn-primary { background: var(--accent); color: white; }
 .btn-primary:hover { background: var(--accent-mid); }
 .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-.btn-outline {
-  background: none; border: 1px solid var(--border2);
-  color: var(--text);
-}
+.btn-outline { background: none; border: 1px solid var(--border2); color: var(--text); }
 .btn-outline:hover { background: var(--surface2); }
-.btn-danger-outline {
-  background: none; border: 1px solid #E2B0AA;
-  color: var(--danger); font-size: 13px;
-  padding: 7px 14px; width: auto;
-  border-radius: var(--radius);
-}
-.btn-sm {
-  width: auto; padding: 6px 14px; font-size: 12px;
-  border-radius: 7px;
-}
-.auth-error {
-  background: var(--danger-light);
-  border: 1px solid #F7C1C1;
-  color: var(--danger);
-  padding: 10px 14px;
-  border-radius: var(--radius);
-  font-size: 13px;
-  margin-bottom: 14px;
-}
-.auth-switch {
-  text-align: center; margin-top: 1rem;
-  font-size: 13px; color: var(--text2);
-}
+.btn-danger-outline { background: none; border: 1px solid #E2B0AA; color: var(--danger); font-size: 13px; padding: 7px 14px; width: auto; border-radius: var(--radius); }
+.btn-sm { width: auto; padding: 6px 14px; font-size: 12px; border-radius: 7px; }
+.auth-error { background: var(--danger-light); border: 1px solid #F7C1C1; color: var(--danger); padding: 10px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 14px; }
+.auth-switch { text-align: center; margin-top: 1rem; font-size: 13px; color: var(--text2); }
 .auth-switch a { color: var(--accent-mid); cursor: pointer; text-decoration: none; }
 
 /* ── APP SHELL ── */
 #app { display: none; min-height: 100vh; }
-.sidebar {
-  position: fixed; top: 0; left: 0; bottom: 0;
-  width: 230px;
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  display: flex; flex-direction: column;
-  z-index: 100;
-}
-.sidebar-logo {
-  padding: 1.25rem 1.25rem 1rem;
-  display: flex; align-items: center; gap: 10px;
-  border-bottom: 1px solid var(--border);
-}
-.logo-icon {
-  width: 32px; height: 32px;
-  background: var(--accent);
-  border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-}
+.sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 230px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 100; }
+.sidebar-logo { padding: 1.25rem 1.25rem 1rem; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--border); }
+.logo-icon { width: 32px; height: 32px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
 .logo-icon svg { width: 16px; height: 16px; fill: white; }
 .logo-text { font-size: 16px; font-weight: 600; letter-spacing: -0.3px; }
 .nav { flex: 1; padding: 0.75rem; overflow-y: auto; }
 .nav-section { font-size: 10px; font-weight: 600; color: var(--text3); letter-spacing: 0.8px; text-transform: uppercase; padding: 8px 8px 4px; margin-top: 8px; }
-.nav-item {
-  display: flex; align-items: center; gap: 9px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  cursor: pointer;
-  color: var(--text2);
-  font-size: 13px; font-weight: 500;
-  transition: all 0.12s;
-  border: none; background: none; width: 100%; text-align: left;
-}
+.nav-item { display: flex; align-items: center; gap: 9px; padding: 8px 10px; border-radius: 8px; cursor: pointer; color: var(--text2); font-size: 13px; font-weight: 500; transition: all 0.12s; border: none; background: none; width: 100%; text-align: left; }
 .nav-item:hover { background: var(--surface2); color: var(--text); }
 .nav-item.active { background: var(--accent-light); color: var(--accent); }
 .nav-item svg { width: 16px; height: 16px; flex-shrink: 0; }
-.sidebar-user {
-  padding: 1rem;
-  border-top: 1px solid var(--border);
-}
-.user-info {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 8px;
-}
-.user-avatar {
-  width: 34px; height: 34px;
-  background: var(--accent-light);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px; font-weight: 600; color: var(--accent);
-  flex-shrink: 0;
-}
+.sidebar-user { padding: 1rem; border-top: 1px solid var(--border); }
+.user-info { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.user-avatar { width: 34px; height: 34px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; }
 .user-name { font-size: 13px; font-weight: 500; line-height: 1.3; }
 .user-role { font-size: 11px; color: var(--text3); }
-.logout-btn {
-  width: 100%; padding: 7px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: none; cursor: pointer;
-  font-size: 12px; color: var(--text2);
-  transition: all 0.12s;
-}
+.logout-btn { width: 100%; padding: 7px; border: 1px solid var(--border); border-radius: 8px; background: none; cursor: pointer; font-size: 12px; color: var(--text2); transition: all 0.12s; }
 .logout-btn:hover { background: var(--surface2); }
 .main { margin-left: 230px; padding: 2rem; min-height: 100vh; }
 .page { display: none; }
@@ -274,69 +110,29 @@ select::-ms-expand {
 
 /* ── STATS ── */
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 1.75rem; }
-.stat-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.1rem 1.25rem;
-}
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.1rem 1.25rem; }
 .stat-label { font-size: 12px; color: var(--text2); margin-bottom: 4px; }
 .stat-value { font-size: 24px; font-weight: 600; letter-spacing: -0.5px; }
 .stat-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
 
 /* ── TABLE ── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.card-header {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.card-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .card-header h3 { font-size: 14px; font-weight: 600; }
 .card-body { padding: 1.25rem; }
-.search-bar {
-  position: relative; width: 240px;
-}
-.search-bar svg {
-  position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
-  width: 14px; height: 14px; color: var(--text3);
-}
-.search-bar input {
-  width: 100%; padding: 7px 10px 7px 32px;
-  border: 1px solid var(--border);
-  border-radius: 8px; font-size: 13px;
-  background: var(--bg); color: var(--text);
-  outline: none;
-}
+.search-bar { position: relative; width: 240px; }
+.search-bar svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--text3); }
+.search-bar input { width: 100%; padding: 7px 10px 7px 32px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; background: var(--bg); color: var(--text); outline: none; }
 .search-bar input:focus { border-color: var(--accent-mid); background: var(--surface); }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
-th {
-  text-align: left; padding: 10px 14px;
-  font-size: 11px; font-weight: 600;
-  color: var(--text3); letter-spacing: 0.4px; text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
-  background: var(--surface2);
-}
+th { text-align: left; padding: 10px 14px; font-size: 11px; font-weight: 600; color: var(--text3); letter-spacing: 0.4px; text-transform: uppercase; border-bottom: 1px solid var(--border); background: var(--surface2); }
 td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: var(--bg); }
-.tracking-no {
-  font-family: 'DM Mono', monospace;
-  font-size: 12px;
-  color: var(--accent-mid);
-  font-weight: 500;
-}
+.tracking-no { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent-mid); font-weight: 500; }
 
 /* ── BADGES ── */
-.badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  padding: 3px 9px; border-radius: 20px;
-  font-size: 11px; font-weight: 600;
-}
+.badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; }
 .badge-beklemede { background: var(--warn-light); color: var(--warn); }
 .badge-yolda { background: var(--info-light); color: var(--info); }
 .badge-teslim { background: var(--success-light); color: var(--success); }
@@ -345,39 +141,14 @@ tr:hover td { background: var(--bg); }
 .badge-bekliyor { background: var(--warn-light); color: var(--warn); }
 
 /* ── MODAL ── */
-.modal-overlay {
-  position: fixed; inset: 0;
-  background: rgba(10,10,8,0.55);
-  display: flex; align-items: center; justify-content: center;
-  z-index: 500; padding: 1rem;
-}
-.modal {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  width: 560px; max-width: 100%;
-  max-height: 90vh; overflow-y: auto;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
-}
-.modal-header {
-  padding: 1.25rem 1.5rem;
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: space-between;
-}
+.modal-overlay { position: fixed; inset: 0; background: rgba(10,10,8,0.55); display: flex; align-items: center; justify-content: center; z-index: 500; padding: 1rem; }
+.modal { background: var(--surface); border-radius: var(--radius-lg); width: 560px; max-width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+.modal-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
 .modal-header h3 { font-size: 16px; font-weight: 600; }
-.modal-close {
-  width: 28px; height: 28px;
-  border: none; background: var(--surface2);
-  border-radius: 7px; cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text2);
-}
+.modal-close { width: 28px; height: 28px; border: none; background: var(--surface2); border-radius: 7px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--text2); }
 .modal-close:hover { background: var(--border); }
 .modal-body { padding: 1.5rem; }
-.modal-footer {
-  padding: 1rem 1.5rem;
-  border-top: 1px solid var(--border);
-  display: flex; justify-content: flex-end; gap: 10px;
-}
+.modal-footer { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
 
 /* ── DETAIL VIEW ── */
 .detail-section { margin-bottom: 1.5rem; }
@@ -388,105 +159,47 @@ tr:hover td { background: var(--bg); }
 
 /* ── TIMELINE ── */
 .timeline { position: relative; padding-left: 20px; }
-.timeline::before {
-  content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
-  width: 1px; background: var(--border);
-}
+.timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: var(--border); }
 .timeline-item { position: relative; margin-bottom: 14px; }
-.timeline-dot {
-  position: absolute; left: -18px; top: 4px;
-  width: 10px; height: 10px;
-  border-radius: 50%; border: 2px solid var(--accent-mid);
-  background: var(--surface);
-}
+.timeline-dot { position: absolute; left: -18px; top: 4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--accent-mid); background: var(--surface); }
 .timeline-dot.filled { background: var(--accent-mid); }
 .timeline-time { font-size: 11px; color: var(--text3); }
 .timeline-status { font-size: 13px; font-weight: 500; }
 .timeline-note { font-size: 12px; color: var(--text2); }
 
 /* ── EMPTY ── */
-.empty-state {
-  text-align: center; padding: 3rem 1rem;
-  color: var(--text3);
-}
+.empty-state { text-align: center; padding: 3rem 1rem; color: var(--text3); }
 .empty-icon { font-size: 36px; margin-bottom: 10px; }
 .empty-state p { font-size: 14px; }
 
 /* ── TOAST ── */
-#toast {
-  position: fixed; bottom: 1.5rem; right: 1.5rem;
-  background: var(--text); color: white;
-  padding: 10px 18px; border-radius: 9px;
-  font-size: 13px; font-weight: 500;
-  transform: translateY(100px); opacity: 0;
-  transition: all 0.25s;
-  z-index: 9998;
-}
+#toast { position: fixed; bottom: 1.5rem; right: 1.5rem; background: var(--text); color: white; padding: 10px 18px; border-radius: 9px; font-size: 13px; font-weight: 500; transform: translateY(100px); opacity: 0; transition: all 0.25s; z-index: 9998; }
 #toast.show { transform: translateY(0); opacity: 1; }
 #toast.success { background: var(--success); }
 #toast.error { background: var(--danger); }
 
 /* ── SELECT FILTERS ── */
-.filters {
-  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-.filters select {
-  padding: 6px 10px;
-  border: 1px solid var(--border);
-  border-radius: 8px; font-size: 12px;
-  background: var(--surface); color: var(--text);
-  outline: none; cursor: pointer;
-}
-.action-btn {
-  display: inline-flex; align-items: center; gap: 5px;
-  padding: 5px 10px; border-radius: 7px;
-  border: 1px solid var(--border); background: none;
-  font-size: 12px; color: var(--text2); cursor: pointer;
-  transition: all 0.12s;
-}
+.filters { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
+.filters select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; background: var(--surface); color: var(--text); outline: none; cursor: pointer; }
+.action-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--border); background: none; font-size: 12px; color: var(--text2); cursor: pointer; transition: all 0.12s; }
 .action-btn:hover { background: var(--surface2); color: var(--text); }
 .action-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
 .action-btn.primary:hover { background: var(--accent-mid); }
 .action-btn svg { width: 13px; height: 13px; }
 
 /* ── CUSTOMER PANEL ── */
-.welcome-banner {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
-  color: white;
-  margin-bottom: 1.75rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
+.welcome-banner { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%); border-radius: var(--radius-lg); padding: 1.5rem; color: white; margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
 .welcome-banner h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
 .welcome-banner p { font-size: 13px; opacity: 0.8; }
 
 /* ── LOADING ── */
-.loading {
-  display: flex; align-items: center; justify-content: center;
-  padding: 2rem; color: var(--text3); gap: 10px;
-}
-.spinner {
-  width: 18px; height: 18px;
-  border: 2px solid var(--border);
-  border-top-color: var(--accent-mid);
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
+.loading { display: flex; align-items: center; justify-content: center; padding: 2rem; color: var(--text3); gap: 10px; }
+.spinner { width: 18px; height: 18px; border: 2px solid var(--border); border-top-color: var(--accent-mid); border-radius: 50%; animation: spin 0.7s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ── ADMIN CUSTOMER LIST ── */
-.customer-chip {
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.customer-avatar-sm {
-  width: 26px; height: 26px;
-  border-radius: 50%; background: var(--accent-light);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 600; color: var(--accent);
-  flex-shrink: 0;
-}
+.customer-chip { display: inline-flex; align-items: center; gap: 6px; }
+.customer-avatar-sm { width: 26px; height: 26px; border-radius: 50%; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; color: var(--accent); flex-shrink: 0; }
 
 /* ════════════════════════════════════════════════════════════ */
 /* 📱 %100 MOBİL UYGULAMA (APP) TASARIMI - KOMPAKT SÜRÜM        */
@@ -502,35 +215,18 @@ tr:hover td { background: var(--bg); }
 @media (max-width: 768px) {
   /* 1. APP SHELL (Üst ve Alt Bar İçin Boşluklar) */
   body { font-size: 13px; }
-  .main { 
-    margin-left: 0 !important; 
-    padding: 80px 1rem 85px 1rem !important; 
-    min-height: 100vh; 
-  }
+  .main { margin-left: 0 !important; padding: 80px 1rem 85px 1rem !important; min-height: 100vh; }
   .page-header h1 { font-size: 20px; }
   
   /* 2. ÜST BAR (Sabit Logo ve ÇIKIŞ Butonu) */
   .sidebar { background: transparent; border: none; box-shadow: none; z-index: 1000; }
-  .sidebar-logo {
-    display: flex !important; position: fixed; top: 0; left: 0; width: 50%; height: 60px;
-    background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 1rem; z-index: 1000;
-  }
-  .sidebar-user {
-    display: flex !important; position: fixed; top: 0; right: 0; width: 50%; height: 60px;
-    background: var(--surface); border-bottom: 1px solid var(--border); border-top: none; padding: 0 1rem; z-index: 1000; justify-content: flex-end; align-items: center;
-  }
+  .sidebar-logo { display: flex !important; position: fixed; top: 0; left: 0; width: 50%; height: 60px; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 1rem; z-index: 1000; }
+  .sidebar-user { display: flex !important; position: fixed; top: 0; right: 0; width: 50%; height: 60px; background: var(--surface); border-bottom: 1px solid var(--border); border-top: none; padding: 0 1rem; z-index: 1000; justify-content: flex-end; align-items: center; }
   .user-info { display: none; }
-  .logout-btn { 
-    width: auto; padding: 7px 14px; background: var(--danger-light); 
-    color: var(--danger); border: 1px solid #F7C1C1; font-weight: 600; border-radius: 8px; font-size: 11px;
-  }
+  .logout-btn { width: auto; padding: 7px 14px; background: var(--danger-light); color: var(--danger); border: 1px solid #F7C1C1; font-weight: 600; border-radius: 8px; font-size: 11px; }
   
   /* 3. ALT NAVİGASYON BARI */
-  .nav { 
-    position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
-    background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
-    display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 0; z-index: 1000;
-  }
+  .nav { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 20px rgba(0,0,0,0.08); display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 0; z-index: 1000; }
   .nav-section { display: none !important; }
   .nav-item { flex-direction: column; justify-content: center; align-items: center; padding: 6px 0; gap: 4px; font-size: 10px; font-weight: 600; width: 25%; border-radius: 0; color: var(--text3); }
   .nav-item.active { background: transparent; color: var(--accent-mid); }
@@ -548,33 +244,15 @@ tr:hover td { background: var(--bg); }
   /* Mobilde Dropdown Filtrelerini Gizle, İki Butonlu Sistemi Göster */
   .desktop-filters { display: none !important; }
   .mobile-filters-container {
-    display: flex !important;
-    width: 100%;
-    gap: 10px;
-    margin-top: 5px;
-    position: relative;
-    z-index: 99; /* Görünmez katmanların üstüne çıkarır */
+    display: flex !important; width: 100%; gap: 10px; margin-top: 5px;
+    position: relative; z-index: 99; /* Görünmez katmanların üstüne çıkarır */
   }
   .mobile-filter-btn {
-    flex: 1;
-    padding: 12px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text2);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-    position: relative;
-    z-index: 100; /* Tıklanabilirliği %100 garanti altına alır */
+    flex: 1; padding: 12px; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface);
+    color: var(--text2); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; text-align: center;
+    position: relative; z-index: 100; /* Tıklanabilirliği %100 garanti altına alır */
   }
-  .mobile-filter-btn.active {
-    background: var(--accent);
-    color: white;
-    border-color: var(--accent);
-  }
+  .mobile-filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
   
   input, select, textarea, .btn { padding: 10px !important; font-size: 13px !important; } 
   
@@ -586,14 +264,8 @@ tr:hover td { background: var(--bg); }
   table, thead, tbody, th, td, tr { display: block; width: 100%; }
   thead tr { display: none; } 
   
-  tr { 
-    margin-bottom: 10px; border: 1px solid var(--border); border-radius: var(--radius); 
-    padding: 10px 12px; background: var(--surface); box-shadow: var(--shadow);
-  }
-  td { 
-    border: none !important; padding: 4px 0 !important; text-align: right; 
-    display: flex; justify-content: space-between; align-items: center; font-size: 12px;
-  }
+  tr { margin-bottom: 10px; border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; background: var(--surface); box-shadow: var(--shadow); }
+  td { border: none !important; padding: 4px 0 !important; text-align: right; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
   td::before { content: attr(data-label); font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; }
   td:last-child { margin-top: 6px; padding-top: 8px !important; border-top: 1px solid var(--surface2) !important; justify-content: center; }
   td:last-child::before { display: none; }
@@ -627,7 +299,6 @@ select {
 </head>
 <body>
 
-
 <div id="sql-modal" class="modal-overlay" style="display:none; z-index:10000;">
   <div class="modal" style="width:680px;">
     <div class="modal-header">
@@ -653,49 +324,24 @@ select {
         <sub>Online Kargo Sistemi</sub>
       </div>
     </div>
-
     <div class="auth-tabs">
       <button class="auth-tab active" onclick="switchAuthTab('login')">Giriş Yap</button>
       <button class="auth-tab" onclick="switchAuthTab('register')">Kayıt Ol</button>
     </div>
-
     <div id="auth-error" class="auth-error" style="display:none;"></div>
-
     <div id="login-form">
-      <div class="form-group">
-        <label>E-posta</label>
-        <input type="email" id="login-email" placeholder="ornek@mail.com" />
-      </div>
-      <div class="form-group">
-        <label>Şifre</label>
-        <input type="password" id="login-pass" placeholder="••••••••" />
-      </div>
+      <div class="form-group"><label>E-posta</label><input type="email" id="login-email" placeholder="ornek@mail.com" /></div>
+      <div class="form-group"><label>Şifre</label><input type="password" id="login-pass" placeholder="••••••••" /></div>
       <button class="btn btn-primary" id="login-btn" onclick="login()">Giriş Yap</button>
     </div>
-
     <div id="register-form" style="display:none;">
       <div class="form-row">
-        <div class="form-group">
-          <label>Ad</label>
-          <input type="text" id="reg-first" placeholder="Ahmet" />
-        </div>
-        <div class="form-group">
-          <label>Soyad</label>
-          <input type="text" id="reg-last" placeholder="Yılmaz" />
-        </div>
+        <div class="form-group"><label>Ad</label><input type="text" id="reg-first" placeholder="Ahmet" /></div>
+        <div class="form-group"><label>Soyad</label><input type="text" id="reg-last" placeholder="Yılmaz" /></div>
       </div>
-      <div class="form-group">
-        <label>E-posta</label>
-        <input type="email" id="reg-email" placeholder="ornek@mail.com" />
-      </div>
-      <div class="form-group">
-        <label>Telefon</label>
-        <input type="tel" id="reg-phone" placeholder="0532 000 0000" />
-      </div>
-      <div class="form-group">
-        <label>Şifre</label>
-        <input type="password" id="reg-pass" placeholder="En az 6 karakter" />
-      </div>
+      <div class="form-group"><label>E-posta</label><input type="email" id="reg-email" placeholder="ornek@mail.com" /></div>
+      <div class="form-group"><label>Telefon</label><input type="tel" id="reg-phone" placeholder="0532 000 0000" /></div>
+      <div class="form-group"><label>Şifre</label><input type="password" id="reg-pass" placeholder="En az 6 karakter" /></div>
       <button class="btn btn-primary" id="register-btn" onclick="register()">Hesap Oluştur</button>
     </div>
   </div>
@@ -704,19 +350,14 @@ select {
 <div id="app">
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zm0 2.24L19 8v8.76L12 20 5 16.76V8l7-3.76z"/></svg>
-      </div>
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v10l9 5 9-5V7L12 2zm0 2.24L19 8v8.76L12 20 5 16.76V8l7-3.76z"/></svg></div>
       <span class="logo-text">KargoNet</span>
     </div>
     <nav class="nav" id="nav-container"></nav>
     <div class="sidebar-user">
       <div class="user-info">
         <div class="user-avatar" id="user-avatar-text">AY</div>
-        <div>
-          <div class="user-name" id="user-display-name">Kullanıcı</div>
-          <div class="user-role" id="user-display-role">Müşteri</div>
-        </div>
+        <div><div class="user-name" id="user-display-name">Kullanıcı</div><div class="user-role" id="user-display-role">Müşteri</div></div>
       </div>
       <button class="logout-btn" onclick="logout()">Çıkış Yap</button>
     </div>
@@ -724,19 +365,10 @@ select {
 
   <main class="main">
     <div id="page-musteridashboard" class="page">
-      <div class="page-header">
-        <h1>Genel Bakış</h1>
-        <p>Kargolarınızın özeti</p>
-      </div>
+      <div class="page-header"><h1>Genel Bakış</h1><p>Kargolarınızın özeti</p></div>
       <div class="welcome-banner">
-        <div>
-          <h2 id="welcome-name">Hoş geldiniz</h2>
-          <p>Yeni kargo oluşturabilir veya mevcut kargolarınızı takip edebilirsiniz.</p>
-        </div>
-        <button class="action-btn primary" onclick="showPage('page-yenikargo')" style="white-space:nowrap;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
-          Yeni Kargo
-        </button>
+        <div><h2 id="welcome-name">Hoş geldiniz</h2><p>Yeni kargo oluşturabilir veya takip edebilirsiniz.</p></div>
+        <button class="action-btn primary" onclick="showPage('page-yenikargo')" style="white-space:nowrap;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Yeni Kargo</button>
       </div>
       <div class="stats-grid" id="musteri-stats"></div>
       <div class="card">
@@ -746,28 +378,19 @@ select {
     </div>
 
     <div id="page-yenikargo" class="page">
-      <div class="page-header">
-        <h1>Yeni Kargo Oluştur</h1>
-        <p>Kargo bilgilerini doldurun</p>
-      </div>
+      <div class="page-header"><h1>Yeni Kargo Oluştur</h1><p>Kargo bilgilerini doldurun</p></div>
       <div class="card" style="max-width:600px;">
         <div class="card-body">
           <div class="detail-section" style="display: none;">
             <h4>Gönderici Bilgileri</h4>
             <div class="form-group"><label>Ad Soyad</label><input type="text" id="g-adsoyad" /></div>
-            <div class="form-row">
-              <div class="form-group"><label>Telefon</label><input type="tel" id="g-tel" /></div>
-              <div class="form-group"><label>İl</label><input type="text" id="g-il" /></div>
-            </div>
+            <div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="g-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="g-il" /></div></div>
             <div class="form-group"><label>Açık Adres</label><textarea id="g-adres" rows="2"></textarea></div>
           </div>
           <div class="detail-section">
             <h4>Alıcı Bilgileri</h4>
             <div class="form-group"><label>Ad Soyad</label><input type="text" id="a-adsoyad" /></div>
-            <div class="form-row">
-              <div class="form-group"><label>Telefon</label><input type="tel" id="a-tel" /></div>
-              <div class="form-group"><label>İl</label><input type="text" id="a-il" /></div>
-            </div>
+            <div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="a-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="a-il" /></div></div>
             <div class="form-group"><label>Açık Adres</label><textarea id="a-adres" rows="2"></textarea></div>
           </div>
           <div class="detail-section">
@@ -775,10 +398,7 @@ select {
              <div class="form-row">
               <div class="form-group">
                 <label>Ödeme Alınacak mı?</label>
-                <select id="odeme-tipi" onchange="toggleUcret('ucret', this.value)">
-                  <option value="hayir">Hayır</option>
-                  <option value="evet">Evet (Tahsilatlı)</option>
-                </select>
+                <select id="odeme-tipi" onchange="toggleUcret('ucret', this.value)"><option value="hayir">Hayır</option><option value="evet">Evet (Tahsilatlı)</option></select>
               </div>
               <div class="form-group" id="ucret-kapsayici" style="display: none;">
                 <label>Alınacak Tutar (₺)</label>
@@ -793,10 +413,7 @@ select {
     </div>
 
     <div id="page-kargolarim" class="page">
-      <div class="page-header">
-        <h1>Kargolarım</h1>
-        <p>Tüm kargolarınızın listesi</p>
-      </div>
+      <div class="page-header"><h1>Kargolarım</h1><p>Tüm kargolarınızın listesi</p></div>
       <div class="card">
         <div class="card-header">
           <div class="search-bar">
@@ -817,27 +434,16 @@ select {
     </div>
 
     <div id="page-admindashboard" class="page">
-      <div class="page-header">
-        <h1>Yönetim Paneli</h1>
-        <p>Sistem genel durumu</p>
-      </div>
+      <div class="page-header"><h1>Yönetim Paneli</h1><p>Sistem genel durumu</p></div>
       <div class="stats-grid" id="admin-stats"></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem;">
-        <div class="card">
-          <div class="card-header"><h3>Son Kargolar</h3></div>
-          <div id="admin-son-kargolar"></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><h3>Bekleyen Ödemeler</h3></div>
-          <div id="admin-bekleyen-odemeler"></div>
-        </div>
+        <div class="card"><div class="card-header"><h3>Son Kargolar</h3></div><div id="admin-son-kargolar"></div></div>
+        <div class="card"><div class="card-header"><h3>Bekleyen Ödemeler</h3></div><div id="admin-bekleyen-odemeler"></div></div>
       </div>
     </div>
 
     <div id="page-tumkargolar" class="page">
-      <div class="page-header">
-        <h1>Tüm Kargolar</h1>
-      </div>
+      <div class="page-header"><h1>Tüm Kargolar</h1></div>
       <div class="card">
         <div class="card-header">
           <div class="search-bar">
@@ -868,9 +474,7 @@ select {
 
     <div id="page-musteriler" class="page">
       <div class="page-header"><h1>Müşteriler</h1></div>
-      <div class="card">
-        <div id="musteriler-table"></div>
-      </div>
+      <div class="card"><div id="musteriler-table"></div></div>
     </div>
 
     <div id="page-raporlar" class="page">
@@ -912,91 +516,7 @@ select {
 <div id="toast"></div>
 
 <script>
-const SQL_SCHEMA = `-- KargoNet Supabase SQL Şeması
--- Supabase Dashboard > SQL Editor > New Query > Yapıştır > Run
-
--- 1. Profiller tablosu
-CREATE TABLE IF NOT EXISTS profiles (
-  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  first_name TEXT NOT NULL,
-  last_name TEXT NOT NULL,
-  phone TEXT,
-  role TEXT NOT NULL DEFAULT 'musteri',
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- 2. Kargolar tablosu
-CREATE TABLE IF NOT EXISTS kargolar (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  tracking_no TEXT UNIQUE NOT NULL,
-  user_id UUID REFERENCES profiles(id),
-  
-  -- Gönderici
-  g_adsoyad TEXT NOT NULL,
-  g_tel TEXT,
-  g_il TEXT,
-  g_adres TEXT,
-  
-  -- Alıcı
-  a_adsoyad TEXT NOT NULL,
-  a_tel TEXT,
-  a_il TEXT,
-  a_adres TEXT,
-  
-  -- Kargo
-  durum TEXT NOT NULL DEFAULT 'beklemede',
-  odeme_tipi TEXT DEFAULT 'gonderici',
-  ucret NUMERIC(10,2) DEFAULT 0,
-  odeme_durumu TEXT DEFAULT 'bekliyor',
-  aciklama TEXT,
-  
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- 3. Durum geçmişi
-CREATE TABLE IF NOT EXISTS kargo_gecmis (
-  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  kargo_id UUID REFERENCES kargolar(id) ON DELETE CASCADE,
-  durum TEXT NOT NULL,
-  not TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- 4. RLS Politikaları (Row Level Security)
-ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
-ALTER TABLE kargolar ENABLE ROW LEVEL SECURITY;
-ALTER TABLE kargo_gecmis ENABLE ROW LEVEL SECURITY;
-
--- Profil: kendi profilini görebilir/güncelleyebilir
-CREATE POLICY "Kendi profilini gör" ON profiles FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "Kendi profilini güncelle" ON profiles FOR UPDATE USING (auth.uid() = id);
-CREATE POLICY "Profil oluştur" ON profiles FOR INSERT WITH CHECK (auth.uid() = id);
-
--- Admin her şeyi görebilir (rol kontrolü)
-CREATE POLICY "Admin profil görebilir" ON profiles FOR ALL
-  USING (EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin'));
-
--- Kargo: kendi kargolarını görebilir
-CREATE POLICY "Kendi kargolarını gör" ON kargolar FOR SELECT
-  USING (user_id = auth.uid() OR 
-         EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin'));
-
-CREATE POLICY "Kargo oluştur" ON kargolar FOR INSERT
-  WITH CHECK (user_id = auth.uid());
-
-CREATE POLICY "Kargo güncelle" ON kargolar FOR UPDATE
-  USING (user_id = auth.uid() OR 
-         EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin'));
-
--- Geçmiş
-CREATE POLICY "Kargo geçmişi gör" ON kargo_gecmis FOR SELECT
-  USING (EXISTS (SELECT 1 FROM kargolar WHERE id = kargo_id AND 
-    (user_id = auth.uid() OR EXISTS (SELECT 1 FROM profiles WHERE id = auth.uid() AND role = 'admin'))));
-
-CREATE POLICY "Geçmiş ekle" ON kargo_gecmis FOR INSERT
-  WITH CHECK (EXISTS (SELECT 1 FROM kargolar WHERE id = kargo_id));
-`;
+const SQL_SCHEMA = `-- KargoNet Supabase SQL Şeması`;
 
 // ─── STATE ───
 let sb = null;
@@ -1015,21 +535,12 @@ initSupabase(SUPABASE_URL, SUPABASE_KEY);
 checkAuth();
 
 function showSqlModal() { document.getElementById('sql-modal').style.display = 'flex'; }
-function copySql() {
-  navigator.clipboard.writeText(SQL_SCHEMA);
-  toast('SQL kopyalandı!', 'success');
-}
-
-function initSupabase(url, key) {
-  sb = supabase.createClient(url, key);
-}
+function copySql() { navigator.clipboard.writeText(SQL_SCHEMA); toast('SQL kopyalandı!', 'success'); }
+function initSupabase(url, key) { sb = supabase.createClient(url, key); }
 
 async function checkAuth() {
   const { data: { session } } = await sb.auth.getSession();
-  if (session) {
-    await loadProfile(session.user);
-    showApp();
-  }
+  if (session) { await loadProfile(session.user); showApp(); }
   sb.auth.onAuthStateChange(async (event, session) => {
     if (session) { await loadProfile(session.user); showApp(); }
     else { showAuth(); }
@@ -1038,19 +549,12 @@ async function checkAuth() {
 
 async function loadProfile(user) {
   currentUser = user;
-  
-  // 1. Önce profili bulmayı dene
   let { data, error } = await sb.from('profiles').select('*').eq('id', user.id).single();
-  
-  // 2. Eğer zamanlama çakışması (406 hatası) olursa, panik yapma!
   if (error) {
-    // Arka plandaki kayıt işleminin bitmesi için 1 saniye (1000 milisaniye) bekle
     await new Promise(resolve => setTimeout(resolve, 1000));
-    // Ve profili getirmeyi tekrar dene
     const retry = await sb.from('profiles').select('*').eq('id', user.id).single();
     data = retry.data;
   }
-  
   currentProfile = data;
 }
 
@@ -1083,9 +587,7 @@ async function register() {
   btn.disabled = true; btn.textContent = 'Kayıt olunuyor...';
   const { data, error } = await sb.auth.signUp({ email, password: pass });
   if (error) { btn.disabled = false; btn.textContent = 'Hesap Oluştur'; return showAuthError(error.message); }
-  if (data.user) {
-    await sb.from('profiles').insert({ id: data.user.id, first_name: first, last_name: last, phone, role: 'musteri' });
-  }
+  if (data.user) { await sb.from('profiles').insert({ id: data.user.id, first_name: first, last_name: last, phone, role: 'musteri' }); }
   btn.disabled = false; btn.textContent = 'Hesap Oluştur';
   toast('Hesap oluşturuldu! Giriş yapabilirsiniz.', 'success');
   switchAuthTab('login');
@@ -1097,26 +599,17 @@ function showAuthError(msg) {
 }
 
 async function logout() {
-  try {
-    await sb.auth.signOut();
-  } catch (error) {
-    console.log("Çıkış yapılırken ufak bir pürüz çıktı ama hallediliyor:", error);
-  }
+  try { await sb.auth.signOut(); } catch (error) { console.log(error); }
   localStorage.clear();
   location.reload();
 }
 
 // ─── NAVIGATION ───
-function showAuth() {
-  document.getElementById('auth-screen').style.display = 'flex';
-  document.getElementById('app').style.display = 'none';
-}
-
+function showAuth() { document.getElementById('auth-screen').style.display = 'flex'; document.getElementById('app').style.display = 'none'; }
 function showApp() {
   document.getElementById('auth-screen').style.display = 'none';
   document.getElementById('app').style.display = 'block';
-  buildNav();
-  updateUserInfo();
+  buildNav(); updateUserInfo();
   const isAdmin = currentProfile?.role === 'admin';
   showPage(isAdmin ? 'page-admindashboard' : 'page-musteridashboard');
 }
@@ -1125,32 +618,9 @@ function buildNav() {
   const isAdmin = currentProfile?.role === 'admin';
   const nav = document.getElementById('nav-container');
   if (isAdmin) {
-    nav.innerHTML = `
-      <div class="nav-section">Yönetim</div>
-      <button class="nav-item active" data-page="page-admindashboard" onclick="showPage('page-admindashboard')">
-        ${svgHome()} Genel Bakış
-      </button>
-      <button class="nav-item" data-page="page-tumkargolar" onclick="showPage('page-tumkargolar')">
-        ${svgBox()} Tüm Kargolar
-      </button>
-      <button class="nav-item" data-page="page-musteriler" onclick="showPage('page-musteriler')">
-        ${svgUsers()} Müşteriler
-      </button>
-      <button class="nav-item" data-page="page-raporlar" onclick="showPage('page-raporlar')">
-        ${svgChart()} Raporlar
-      </button>`;
+    nav.innerHTML = `<div class="nav-section">Yönetim</div><button class="nav-item active" data-page="page-admindashboard" onclick="showPage('page-admindashboard')">${svgHome()} Genel Bakış</button><button class="nav-item" data-page="page-tumkargolar" onclick="showPage('page-tumkargolar')">${svgBox()} Tüm Kargolar</button><button class="nav-item" data-page="page-musteriler" onclick="showPage('page-musteriler')">${svgUsers()} Müşteriler</button><button class="nav-item" data-page="page-raporlar" onclick="showPage('page-raporlar')">${svgChart()} Raporlar</button>`;
   } else {
-    nav.innerHTML = `
-      <div class="nav-section">Kargom</div>
-      <button class="nav-item active" data-page="page-musteridashboard" onclick="showPage('page-musteridashboard')">
-        ${svgHome()} Genel Bakış
-      </button>
-      <button class="nav-item" data-page="page-yenikargo" onclick="showPage('page-yenikargo')">
-        ${svgPlus()} Yeni Kargo
-      </button>
-      <button class="nav-item" data-page="page-kargolarim" onclick="showPage('page-kargolarim')">
-        ${svgBox()} Kargolarım
-      </button>`;
+    nav.innerHTML = `<div class="nav-section">Kargom</div><button class="nav-item active" data-page="page-musteridashboard" onclick="showPage('page-musteridashboard')">${svgHome()} Genel Bakış</button><button class="nav-item" data-page="page-yenikargo" onclick="showPage('page-yenikargo')">${svgPlus()} Yeni Kargo</button><button class="nav-item" data-page="page-kargolarim" onclick="showPage('page-kargolarim')">${svgBox()} Kargolarım</button>`;
   }
 }
 
@@ -1158,14 +628,7 @@ function showPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === pageId));
   document.getElementById(pageId).classList.add('active');
-  const loaders = {
-    'page-musteridashboard': loadMusteriDashboard,
-    'page-kargolarim': loadKargolarim,
-    'page-admindashboard': loadAdminDashboard,
-    'page-tumkargolar': loadAdminKargolar,
-    'page-musteriler': loadMusteriler,
-    'page-raporlar': loadRaporlar,
-  };
+  const loaders = { 'page-musteridashboard': loadMusteriDashboard, 'page-kargolarim': loadKargolarim, 'page-admindashboard': loadAdminDashboard, 'page-tumkargolar': loadAdminKargolar, 'page-musteriler': loadMusteriler, 'page-raporlar': loadRaporlar };
   if (loaders[pageId]) loaders[pageId]();
 }
 
@@ -1181,34 +644,18 @@ function updateUserInfo() {
 
 // ─── YENİ SIRALI TAKİP KODU OLUŞTURUCU ───
 async function getNextTrackingNo() {
-  const { data, error } = await sb
-    .from('kargolar')
-    .select('tracking_no')
-    .like('tracking_no', 'EFE%')
-    .order('created_at', { ascending: false })
-    .limit(1);
-
-  if (error || !data || data.length === 0) {
-    return 'EFE1';
-  }
-
+  const { data, error } = await sb.from('kargolar').select('tracking_no').like('tracking_no', 'EFE%').order('created_at', { ascending: false }).limit(1);
+  if (error || !data || data.length === 0) return 'EFE1';
   const sonKargoKodu = data[0].tracking_no;
   const sayiKismi = parseInt(sonKargoKodu.replace('EFE', ''));
-  const siradakiSayi = isNaN(sayiKismi) ? 1 : sayiKismi + 1;
-
-  return 'EFE' + siradakiSayi;
+  return 'EFE' + (isNaN(sayiKismi) ? 1 : sayiKismi + 1);
 }
 
 // ─── ÖDEME KUTUSUNU GÖSTER/GİZLE ───
 function toggleUcret(inputId, deger) {
   const kapsayici = document.getElementById(inputId + '-kapsayici');
   const input = document.getElementById(inputId);
-  if (deger === 'evet') {
-    kapsayici.style.display = 'block';
-  } else {
-    kapsayici.style.display = 'none';
-    input.value = ''; // Kutu gizlenirse içindeki rakamı da sıfırla
-  }
+  if (deger === 'evet') { kapsayici.style.display = 'block'; } else { kapsayici.style.display = 'none'; input.value = ''; }
 }
 
 // ─── CREATE KARGO ───
@@ -1216,62 +663,24 @@ async function createKargo() {
   try {
     const isim = currentProfile ? `${currentProfile.first_name} ${currentProfile.last_name}` : 'Sistem Kullanıcısı';
     const tel = currentProfile ? currentProfile.phone : '-';
-
     const btn = document.querySelector('#page-yenikargo .btn-primary');
-    btn.disabled = true;
-    btn.textContent = 'Kargo Oluşturuluyor...';
-
-    // İŞTE BURASI DÜZELDİ: Artık eski genTrackingNo değil, yeni EFE kodunu çağırıyoruz
+    btn.disabled = true; btn.textContent = 'Kargo Oluşturuluyor...';
     const yeniTakipNo = await getNextTrackingNo();
-
     const data = {
-      tracking_no: yeniTakipNo, // <--- Hata veren yer burasıydı, düzelttik!
-      user_id: currentUser.id,
-      g_adsoyad: isim,
-      g_tel: tel || '-',
-      g_il: '-', 
-      g_adres: 'Sistemde Kayıtlı Adres',
-      
-      a_adsoyad: document.getElementById('a-adsoyad').value.trim(),
-      a_tel: document.getElementById('a-tel').value.trim(),
-      a_il: document.getElementById('a-il').value.trim(),
-      a_adres: document.getElementById('a-adres').value.trim(),
+      tracking_no: yeniTakipNo, user_id: currentUser.id, g_adsoyad: isim, g_tel: tel || '-', g_il: '-', g_adres: 'Sistemde Kayıtlı Adres',
+      a_adsoyad: document.getElementById('a-adsoyad').value.trim(), a_tel: document.getElementById('a-tel').value.trim(), a_il: document.getElementById('a-il').value.trim(), a_adres: document.getElementById('a-adres').value.trim(),
       odeme_tipi: document.getElementById('odeme-tipi').value,
-      // Sadece "Evet" seçiliyse ücreti kaydet, "Hayır" ise ücreti zorla 0 yap
       ucret: document.getElementById('odeme-tipi').value === 'evet' ? parseFloat(document.getElementById('ucret').value) || 0 : 0,
-      aciklama: document.getElementById('aciklama').value.trim(),
-      durum: 'beklemede',
-      odeme_durumu: 'bekliyor',
+      aciklama: document.getElementById('aciklama').value.trim(), durum: 'beklemede', odeme_durumu: 'bekliyor',
     };
-
     const { data: newKargo, error } = await sb.from('kargolar').insert(data).select().single();
-
-    if (error) {
-      alert('Veritabanı Hatası: ' + error.message);
-      btn.disabled = false; btn.textContent = 'Kargo Oluştur';
-      return;
-    }
-
+    if (error) { alert('Veritabanı Hatası: ' + error.message); btn.disabled = false; btn.textContent = 'Kargo Oluştur'; return; }
     await sb.from('kargo_gecmis').insert({ kargo_id: newKargo.id, durum: 'beklemede', not: 'Kargo sisteme girildi' });
-
-    document.getElementById('a-adsoyad').value = '';
-    document.getElementById('a-tel').value = '';
-    document.getElementById('a-il').value = '';
-    document.getElementById('a-adres').value = '';
-    document.getElementById('ucret').value = '';
-    document.getElementById('aciklama').value = '';
-
+    document.getElementById('a-adsoyad').value = ''; document.getElementById('a-tel').value = ''; document.getElementById('a-il').value = ''; document.getElementById('a-adres').value = ''; document.getElementById('ucret').value = ''; document.getElementById('aciklama').value = '';
     toast('Kargo başarıyla oluşturuldu! (Takip No: ' + yeniTakipNo + ')', 'success');
     showPage('page-kargolarim');
-    
     btn.disabled = false; btn.textContent = 'Kargo Oluştur';
-
-  } catch (err) {
-    alert('Kod Hatası: ' + err.message);
-    console.error(err);
-    const btn = document.querySelector('#page-yenikargo .btn-primary');
-    if(btn) { btn.disabled = false; btn.textContent = 'Kargo Oluştur'; }
-  }
+  } catch (err) { alert('Kod Hatası: ' + err.message); const btn = document.querySelector('#page-yenikargo .btn-primary'); if(btn) { btn.disabled = false; btn.textContent = 'Kargo Oluştur'; } }
 }
   
 // ─── MUSTERI DASHBOARD ───
@@ -1284,12 +693,7 @@ async function loadMusteriDashboard() {
     { label: 'Teslim Edildi', value: all.filter(k=>k.durum==='teslim').length, sub: 'tamamlanan' },
     { label: 'İptal Edilen', value: all.filter(k=>k.durum==='iptal').length, sub: 'iptal' },
   ];
-  document.getElementById('musteri-stats').innerHTML = stats.map(s => `
-    <div class="stat-card">
-      <div class="stat-label">${s.label}</div>
-      <div class="stat-value">${s.value}</div>
-      <div class="stat-sub">${s.sub}</div>
-    </div>`).join('');
+  document.getElementById('musteri-stats').innerHTML = stats.map(s => `<div class="stat-card"><div class="stat-label">${s.label}</div><div class="stat-value">${s.value}</div><div class="stat-sub">${s.sub}</div></div>`).join('');
   const son5 = all.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,5);
   document.getElementById('musteri-son-kargolar').innerHTML = son5.length ? kargoTable(son5, false) : emptyState('Henüz kargo yok');
 }
@@ -1297,38 +701,22 @@ async function loadMusteriDashboard() {
 // ─── KARGOLARIM ───
 let musteriKargolarAll = [];
 let musteriKargolarFiltered = [];
-
 async function loadKargolarim() {
   document.getElementById('kargolarim-table').innerHTML = '<div class="loading"><div class="spinner"></div> Yükleniyor...</div>';
   const { data } = await sb.from('kargolar').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
-  musteriKargolarAll = data || [];
-  musteriKargolarFiltered = [...musteriKargolarAll];
-  renderKargolarim();
+  musteriKargolarAll = data || []; musteriKargolarFiltered = [...musteriKargolarAll]; renderKargolarim();
 }
-
 function filterMusteriKargolar(q) {
   q = q.toLowerCase();
-  musteriKargolarFiltered = musteriKargolarAll.filter(k =>
-    k.tracking_no.toLowerCase().includes(q) ||
-    k.a_adsoyad.toLowerCase().includes(q) ||
-    k.g_adsoyad.toLowerCase().includes(q)
-  );
+  musteriKargolarFiltered = musteriKargolarAll.filter(k => k.tracking_no.toLowerCase().includes(q) || k.a_adsoyad.toLowerCase().includes(q) || k.g_adsoyad.toLowerCase().includes(q));
   renderKargolarim();
 }
-
-function filterMusteriKargolarDurum(durum) {
-  musteriKargolarFiltered = durum ? musteriKargolarAll.filter(k => k.durum === durum) : [...musteriKargolarAll];
-  renderKargolarim();
-}
-
-function renderKargolarim() {
-  document.getElementById('kargolarim-table').innerHTML = musteriKargolarFiltered.length ? kargoTable(musteriKargolarFiltered, false) : emptyState('Kargo bulunamadı');
-}
+function filterMusteriKargolarDurum(durum) { musteriKargolarFiltered = durum ? musteriKargolarAll.filter(k => k.durum === durum) : [...musteriKargolarAll]; renderKargolarim(); }
+function renderKargolarim() { document.getElementById('kargolarim-table').innerHTML = musteriKargolarFiltered.length ? kargoTable(musteriKargolarFiltered, false) : emptyState('Kargo bulunamadı'); }
 
 // ─── ADMIN DASHBOARD ───
 async function loadAdminDashboard() {
   const { data: kargolar } = await sb.from('kargolar').select('*');
-  const { data: musteriler } = await sb.from('profiles').select('*').eq('role', 'musteri');
   const all = kargolar || [];
   const totalGelir = all.filter(k=>k.odeme_durumu==='odendi').reduce((s,k)=>s+parseFloat(k.ucret||0),0);
   const stats = [
@@ -1337,8 +725,7 @@ async function loadAdminDashboard() {
     { label: 'Bekleyen Ödeme', value: all.filter(k=>k.odeme_durumu==='bekliyor').length },
     { label: 'Toplam Gelir', value: '₺' + totalGelir.toLocaleString('tr-TR', {minimumFractionDigits:2}) },
   ];
-  document.getElementById('admin-stats').innerHTML = stats.map(s => `
-    <div class="stat-card"><div class="stat-label">${s.label}</div><div class="stat-value" style="font-size:${typeof s.value==='string'&&s.value.length>6?'18px':'24px'}">${s.value}</div></div>`).join('');
+  document.getElementById('admin-stats').innerHTML = stats.map(s => `<div class="stat-card"><div class="stat-label">${s.label}</div><div class="stat-value" style="font-size:${typeof s.value==='string'&&s.value.length>6?'18px':'24px'}">${s.value}</div></div>`).join('');
   const son = all.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,5);
   document.getElementById('admin-son-kargolar').innerHTML = son.length ? kargoTableSmall(son) : emptyState('Kargo yok');
   const bek = all.filter(k=>k.odeme_durumu==='bekliyor').slice(0,5);
@@ -1346,7 +733,7 @@ async function loadAdminDashboard() {
 }
 
 // ─── ADMIN ALL CARGOS ───
-let currentMobileAdminFilter = 'beklemede'; // Mobilde varsayılan olarak beklemedekiler açılır
+let currentMobileAdminFilter = 'beklemede';
 
 function setMobileAdminFilter(status) {
   currentMobileAdminFilter = status;
@@ -1359,7 +746,6 @@ async function loadAdminKargolar() {
   document.getElementById('admin-kargolar-table').innerHTML = '<div class="loading"><div class="spinner"></div> Yükleniyor...</div>';
   let q = sb.from('kargolar').select('*, profiles(first_name, last_name)').order('created_at', { ascending: false });
   
-  // Eğer mobil cihazdaysa buton filtrelerini dinle, masaüstündeyse dropdown filtrelerini dinle
   if (window.innerWidth <= 768) {
     q = q.eq('durum', currentMobileAdminFilter);
   } else {
@@ -1376,11 +762,7 @@ async function loadAdminKargolar() {
 
 function filterAdminKargolar(q) {
   q = q.toLowerCase();
-  const filtered = allKargolar.filter(k =>
-    k.tracking_no.toLowerCase().includes(q) ||
-    k.a_adsoyad.toLowerCase().includes(q) ||
-    k.g_adsoyad.toLowerCase().includes(q)
-  );
+  const filtered = allKargolar.filter(k => k.tracking_no.toLowerCase().includes(q) || k.a_adsoyad.toLowerCase().includes(q) || k.g_adsoyad.toLowerCase().includes(q));
   renderAdminKargolar(filtered);
 }
 
@@ -1393,24 +775,7 @@ function renderAdminKargolar(data) {
 async function loadMusteriler() {
   const { data } = await sb.from('profiles').select('*, kargolar(count)').eq('role', 'musteri').order('created_at', { ascending: false });
   const musteriler = data || [];
-  document.getElementById('musteriler-table').innerHTML = `
-    <table>
-      <thead><tr><th>Müşteri</th><th>Telefon</th><th>Kayıt Tarihi</th><th>İşlem</th></tr></thead>
-      <tbody>
-        ${musteriler.map(m => `
-          <tr>
-            <td data-label="Müşteri">
-              <div class="customer-chip">
-                <div class="customer-avatar-sm">${(m.first_name[0]||'')+(m.last_name[0]||'')}</div>
-                <span>${m.first_name} ${m.last_name}</span>
-              </div>
-            </td>
-            <td data-label="Telefon" style="color:var(--text2)">${m.phone||'—'}</td>
-            <td data-label="Kayıt Tarihi" style="color:var(--text2)">${fmtDate(m.created_at)}</td>
-            <td data-label="İşlem"><button class="action-btn" onclick="showMusteriKargolar('${m.id}','${m.first_name} ${m.last_name}')">Kargolarını Gör</button></td>
-          </tr>`).join('')}
-      </tbody>
-    </table>`;
+  document.getElementById('musteriler-table').innerHTML = `<table><thead><tr><th>Müşteri</th><th>Telefon</th><th>Kayıt Tarihi</th><th>İşlem</th></tr></thead><tbody>${musteriler.map(m => `<tr><td data-label="Müşteri"><div class="customer-chip"><div class="customer-avatar-sm">${(m.first_name[0]||'')+(m.last_name[0]||'')}</div><span>${m.first_name} ${m.last_name}</span></div></td><td data-label="Telefon" style="color:var(--text2)">${m.phone||'—'}</td><td data-label="Kayıt Tarihi" style="color:var(--text2)">${fmtDate(m.created_at)}</td><td data-label="İşlem"><button class="action-btn" onclick="showMusteriKargolar('${m.id}','${m.first_name} ${m.last_name}')">Kargolarını Gör</button></td></tr>`).join('')}</tbody></table>`;
 }
 
 async function showMusteriKargolar(userId, name) {
@@ -1427,12 +792,7 @@ async function loadRaporlar() {
   const all = kargolar || [];
   const totalGelir = all.filter(k=>k.odeme_durumu==='odendi').reduce((s,k)=>s+parseFloat(k.ucret||0),0);
   const bekGelir = all.filter(k=>k.odeme_durumu==='bekliyor').reduce((s,k)=>s+parseFloat(k.ucret||0),0);
-  document.getElementById('rapor-stats').innerHTML = [
-    { label: 'Toplam Kargo', value: all.length },
-    { label: 'Tahsil Edilen', value: '₺' + totalGelir.toLocaleString('tr-TR',{minimumFractionDigits:2}) },
-    { label: 'Bekleyen Tahsilat', value: '₺' + bekGelir.toLocaleString('tr-TR',{minimumFractionDigits:2}) },
-  ].map(s => `<div class="stat-card"><div class="stat-label">${s.label}</div><div class="stat-value" style="font-size:20px">${s.value}</div></div>`).join('');
-
+  document.getElementById('rapor-stats').innerHTML = [{ label: 'Toplam Kargo', value: all.length }, { label: 'Tahsil Edilen', value: '₺' + totalGelir.toLocaleString('tr-TR',{minimumFractionDigits:2}) }, { label: 'Bekleyen Tahsilat', value: '₺' + bekGelir.toLocaleString('tr-TR',{minimumFractionDigits:2}) }].map(s => `<div class="stat-card"><div class="stat-label">${s.label}</div><div class="stat-value" style="font-size:20px">${s.value}</div></div>`).join('');
   const byMonth = {};
   all.forEach(k => {
     const m = k.created_at.slice(0,7);
@@ -1442,14 +802,7 @@ async function loadRaporlar() {
     if (k.odeme_durumu==='odendi') byMonth[m].gelir += parseFloat(k.ucret||0);
   });
   const months = Object.keys(byMonth).sort().reverse();
-  document.getElementById('rapor-aylik').innerHTML = months.length ? `<table>
-    <thead><tr><th>Ay</th><th>Toplam</th><th>Teslim</th><th>Gelir</th></tr></thead>
-    <tbody>${months.map(m=>`<tr>
-      <td data-label="Rapor Ayı" style="font-weight:500">${m}</td>
-      <td data-label="Toplam Kargo">${byMonth[m].toplam} Adet</td>
-      <td data-label="Teslim Edilen">${byMonth[m].teslim} Adet</td>
-      <td data-label="Aylık Gelir" style="font-family:'DM Mono',monospace;font-size:12px">₺${byMonth[m].gelir.toLocaleString('tr-TR',{minimumFractionDigits:2})}</td>
-    </tr>`).join('')}</tbody></table>` : emptyState('Veri yok');
+  document.getElementById('rapor-aylik').innerHTML = months.length ? `<table><thead><tr><th>Ay</th><th>Toplam</th><th>Teslim</th><th>Gelir</th></tr></thead><tbody>${months.map(m=>`<tr><td data-label="Rapor Ayı" style="font-weight:500">${m}</td><td data-label="Toplam Kargo">${byMonth[m].toplam} Adet</td><td data-label="Teslim Edilen">${byMonth[m].teslim} Adet</td><td data-label="Aylık Gelir" style="font-family:'DM Mono',monospace;font-size:12px">₺${byMonth[m].gelir.toLocaleString('tr-TR',{minimumFractionDigits:2})}</td></tr>`).join('')}</tbody></table>` : emptyState('Veri yok');
 }
 
 // ─── DETAIL MODAL ───
@@ -1458,60 +811,20 @@ async function showKargoDetail(id) {
   const { data: gecmis } = await sb.from('kargo_gecmis').select('*').eq('kargo_id', id).order('created_at');
   document.getElementById('modal-title').textContent = `Kargo: ${k.tracking_no}`;
   document.getElementById('modal-body').innerHTML = `
-    <div class="detail-section">
-      <h4>Durum</h4>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-        ${badgeHtml(k.durum)} ${badgeOdeme(k.odeme_durumu)}
-        <span style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</span>
-      </div>
-    </div>
+    <div class="detail-section"><h4>Durum</h4><div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">${badgeHtml(k.durum)} ${badgeOdeme(k.odeme_durumu)}<span style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</span></div></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-      <div class="detail-section">
-        <h4>Gönderici</h4>
-        <div class="detail-item" style="margin-bottom:6px"><label>Ad Soyad</label><span>${k.g_adsoyad}</span></div>
-        <div class="detail-item" style="margin-bottom:6px"><label>Telefon</label><span>${k.g_tel||'—'}</span></div>
-        <div class="detail-item" style="margin-bottom:6px"><label>İl</label><span>${k.g_il||'—'}</span></div>
-        <div class="detail-item"><label>Adres</label><span>${k.g_adres||'—'}</span></div>
-      </div>
-      <div class="detail-section">
-        <h4>Alıcı</h4>
-        <div class="detail-item" style="margin-bottom:6px"><label>Ad Soyad</label><span>${k.a_adsoyad}</span></div>
-        <div class="detail-item" style="margin-bottom:6px"><label>Telefon</label><span>${k.a_tel||'—'}</span></div>
-        <div class="detail-item" style="margin-bottom:6px"><label>İl</label><span>${k.a_il||'—'}</span></div>
-        <div class="detail-item"><label>Adres</label><span>${k.a_adres||'—'}</span></div>
-      </div>
+      <div class="detail-section"><h4>Gönderici</h4><div class="detail-item" style="margin-bottom:6px"><label>Ad Soyad</label><span>${k.g_adsoyad}</span></div><div class="detail-item" style="margin-bottom:6px"><label>Telefon</label><span>${k.g_tel||'—'}</span></div><div class="detail-item" style="margin-bottom:6px"><label>İl</label><span>${k.g_il||'—'}</span></div><div class="detail-item"><label>Adres</label><span>${k.g_adres||'—'}</span></div></div>
+      <div class="detail-section"><h4>Alıcı</h4><div class="detail-item" style="margin-bottom:6px"><label>Ad Soyad</label><span>${k.a_adsoyad}</span></div><div class="detail-item" style="margin-bottom:6px"><label>Telefon</label><span>${k.a_tel||'—'}</span></div><div class="detail-item" style="margin-bottom:6px"><label>İl</label><span>${k.a_il||'—'}</span></div><div class="detail-item"><label>Adres</label><span>${k.a_adres||'—'}</span></div></div>
     </div>
-     <div class="detail-section">
-      <h4>Ödeme</h4>
-      <div class="detail-grid">
-        <div class="detail-item"><label>Ödeme Durumu</label><span>${k.odeme_tipi==='evet'?'Tahsilatlı (Ödeme Alınacak)':'Ödeme Alınmayacak'}</span></div>
-        <div class="detail-item"><label>Ücret</label><span style="font-family:'DM Mono',monospace">${k.odeme_tipi==='evet' ? '₺'+parseFloat(k.ucret||0).toFixed(2) : '—'}</span></div>
-      </div>
-    </div>
+     <div class="detail-section"><h4>Ödeme</h4><div class="detail-grid"><div class="detail-item"><label>Ödeme Durumu</label><span>${k.odeme_tipi==='evet'?'Tahsilatlı (Ödeme Alınacak)':'Ödeme Alınmayacak'}</span></div><div class="detail-item"><label>Ücret</label><span style="font-family:'DM Mono',monospace">${k.odeme_tipi==='evet' ? '₺'+parseFloat(k.ucret||0).toFixed(2) : '—'}</span></div></div></div>
     ${k.aciklama ? `<div class="detail-section"><h4>Açıklama</h4><p style="font-size:13px;color:var(--text2)">${k.aciklama}</p></div>` : ''}
-    <div class="detail-section">
-      <h4>Durum Geçmişi</h4>
-      <div class="timeline">
-        ${(gecmis||[]).map((g,i)=>`
-          <div class="timeline-item">
-            <div class="timeline-dot ${i===gecmis.length-1?'filled':''}"></div>
-            <div class="timeline-time">${fmtDateFull(g.created_at)}</div>
-            <div class="timeline-status">${durumLabel(g.durum)}</div>
-            ${g.not ? `<div class="timeline-note">${g.not}</div>` : ''}
-          </div>`).join('')}
-      </div>
-    </div>`;
+    <div class="detail-section"><h4>Durum Geçmişi</h4><div class="timeline">${(gecmis||[]).map((g,i)=>`<div class="timeline-item"><div class="timeline-dot ${i===gecmis.length-1?'filled':''}"></div><div class="timeline-time">${fmtDateFull(g.created_at)}</div><div class="timeline-status">${durumLabel(g.durum)}</div>${g.not ? `<div class="timeline-note">${g.not}</div>` : ''}</div>`).join('')}</div></div>`;
 
-// --- KİMLİK VE YETKİ KONTROLÜ ---
   const isAdmin = currentProfile?.role === 'admin';
   const isOwner = k.user_id === currentUser.id; 
-  
-  // Footer'ın varsayılan hizalamasını ezip tam genişlikte 2 katlı bir yapı kuruyoruz
   document.getElementById('modal-footer').style.display = 'block'; 
-  
   let footerHtml = `<div style="display: flex; flex-direction: column; gap: 16px; width: 100%;">`;
   
-  // 1. KAT: ADMIN HIZLI İŞLEM ÇUBUĞU (Şık Gri Kutu)
   if (isAdmin) {
     footerHtml += `
       <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between;">
@@ -1531,36 +844,20 @@ async function showKargoDetail(id) {
       </div>`;
   } 
   
-  // 2. KAT: STANDART BUTONLAR (Fiş solda, Düzenle/Sil sağda)
   footerHtml += `<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">`;
-  
-  // Sol Köşe
   footerHtml += `<button class="btn btn-outline btn-sm" onclick="printKargoFisi('${k.id}')">🖨️ Fiş Yazdır</button>`;
   
-  // Sağ Köşe
   if (isAdmin) {
-    footerHtml += `
-      <div style="display: flex; gap: 8px;">
-        <button class="btn btn-outline btn-sm" onclick="openEditModal('${k.id}')">Düzenle</button>
-        <button class="btn btn-danger-outline btn-sm" onclick="deleteKargo('${k.id}')">Sil</button>
-      </div>`;
+    footerHtml += `<div style="display: flex; gap: 8px;"><button class="btn btn-outline btn-sm" onclick="openEditModal('${k.id}')">Düzenle</button><button class="btn btn-danger-outline btn-sm" onclick="deleteKargo('${k.id}')">Sil</button></div>`;
   } else if (isOwner) {
     if (k.durum === 'beklemede') {
-      footerHtml += `
-        <div style="display: flex; gap: 8px;">
-          <button class="btn btn-outline btn-sm" onclick="openEditModal('${k.id}')">Düzenle</button>
-          <button class="btn btn-danger-outline btn-sm" onclick="deleteKargo('${k.id}')">Sil</button>
-        </div>`;
+      footerHtml += `<div style="display: flex; gap: 8px;"><button class="btn btn-outline btn-sm" onclick="openEditModal('${k.id}')">Düzenle</button><button class="btn btn-danger-outline btn-sm" onclick="deleteKargo('${k.id}')">Sil</button></div>`;
     } else {
       footerHtml += `<span style="font-size:11px;color:var(--text3);font-style:italic;">İşlem görmüş kargolar düzenlenemez.</span>`;
     }
-  } else {
-    footerHtml += `<div></div>`; // Düzeni korumak için boşluk tutucu
-  }
+  } else { footerHtml += `<div></div>`; }
   
-  footerHtml += `</div></div>`; // Kapsayıcıları kapatıyoruz
-  
-  // Ekrana bas ve modalı aç
+  footerHtml += `</div></div>`;
   document.getElementById('modal-footer').innerHTML = footerHtml;
   document.getElementById('kargo-modal').style.display = 'flex';
 }
@@ -1570,11 +867,9 @@ async function updateKargoDurum(id) {
   const odeme = document.getElementById('odeme-select').value;
   await sb.from('kargolar').update({ durum, odeme_durumu: odeme, updated_at: new Date().toISOString() }).eq('id', id);
   await sb.from('kargo_gecmis').insert({ kargo_id: id, durum, not: 'Admin tarafından güncellendi' });
-  toast('Durum güncellendi', 'success');
-  closeModal('kargo-modal');
+  toast('Durum güncellendi', 'success'); closeModal('kargo-modal');
   const activePage = document.querySelector('.page.active')?.id;
-  if (activePage === 'page-admindashboard') loadAdminDashboard();
-  else if (activePage === 'page-tumkargolar') loadAdminKargolar();
+  if (activePage === 'page-admindashboard') loadAdminDashboard(); else if (activePage === 'page-tumkargolar') loadAdminKargolar();
 }
 
 // ─── EDIT MODAL ───
@@ -1584,121 +879,45 @@ async function openEditModal(id) {
   editingKargoId = id;
   document.getElementById('edit-body').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-      <div>
-        <p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Gönderici</p>
-        <div class="form-group"><label>Ad Soyad</label><input id="e-g-adsoyad" value="${k.g_adsoyad||''}"></div>
-        <div class="form-group"><label>Telefon</label><input id="e-g-tel" value="${k.g_tel||''}"></div>
-        <div class="form-group"><label>İl</label><input id="e-g-il" value="${k.g_il||''}"></div>
-        <div class="form-group"><label>Adres</label><textarea id="e-g-adres" rows="2">${k.g_adres||''}</textarea></div>
-      </div>
-      <div>
-        <p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Alıcı</p>
-        <div class="form-group"><label>Ad Soyad</label><input id="e-a-adsoyad" value="${k.a_adsoyad||''}"></div>
-        <div class="form-group"><label>Telefon</label><input id="e-a-tel" value="${k.a_tel||''}"></div>
-        <div class="form-group"><label>İl</label><input id="e-a-il" value="${k.a_il||''}"></div>
-        <div class="form-group"><label>Adres</label><textarea id="e-a-adres" rows="2">${k.a_adres||''}</textarea></div>
-      </div>
+      <div><p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Gönderici</p><div class="form-group"><label>Ad Soyad</label><input id="e-g-adsoyad" value="${k.g_adsoyad||''}"></div><div class="form-group"><label>Telefon</label><input id="e-g-tel" value="${k.g_tel||''}"></div><div class="form-group"><label>İl</label><input id="e-g-il" value="${k.g_il||''}"></div><div class="form-group"><label>Adres</label><textarea id="e-g-adres" rows="2">${k.g_adres||''}</textarea></div></div>
+      <div><p style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;">Alıcı</p><div class="form-group"><label>Ad Soyad</label><input id="e-a-adsoyad" value="${k.a_adsoyad||''}"></div><div class="form-group"><label>Telefon</label><input id="e-a-tel" value="${k.a_tel||''}"></div><div class="form-group"><label>İl</label><input id="e-a-il" value="${k.a_il||''}"></div><div class="form-group"><label>Adres</label><textarea id="e-a-adres" rows="2">${k.a_adres||''}</textarea></div></div>
     </div>
-    <div class="form-row">
-      <div class="form-group">
-        <label>Ödeme Alınacak mı?</label>
-        <select id="e-odeme-tipi" onchange="toggleUcret('e-ucret', this.value)">
-          <option value="hayir" ${k.odeme_tipi!=='evet'?'selected':''}>Hayır</option>
-          <option value="evet" ${k.odeme_tipi==='evet'?'selected':''}>Evet (Tahsilatlı)</option>
-        </select>
-      </div>
-      <div class="form-group" id="e-ucret-kapsayici" style="display: ${k.odeme_tipi==='evet'?'block':'none'};">
-        <label>Alınacak Tutar (₺)</label>
-        <input type="number" id="e-ucret" value="${k.ucret||0}" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
-      </div>
-    </div>
+    <div class="form-row"><div class="form-group"><label>Ödeme Alınacak mı?</label><select id="e-odeme-tipi" onchange="toggleUcret('e-ucret', this.value)"><option value="hayir" ${k.odeme_tipi!=='evet'?'selected':''}>Hayır</option><option value="evet" ${k.odeme_tipi==='evet'?'selected':''}>Evet (Tahsilatlı)</option></select></div><div class="form-group" id="e-ucret-kapsayici" style="display: ${k.odeme_tipi==='evet'?'block':'none'};"><label>Alınacak Tutar (₺)</label><input type="number" id="e-ucret" value="${k.ucret||0}" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')"></div></div>
     <div class="form-group"><label>Açıklama</label><textarea id="e-aciklama" rows="2">${k.aciklama||''}</textarea></div>`;
   document.getElementById('edit-modal').style.display = 'flex';
 }
 
 async function saveEdit() {
   const updates = {
-    g_adsoyad: document.getElementById('e-g-adsoyad').value.trim(),
-    g_tel: document.getElementById('e-g-tel').value.trim(),
-    g_il: document.getElementById('e-g-il').value.trim(),
-    g_adres: document.getElementById('e-g-adres').value.trim(),
-    a_adsoyad: document.getElementById('e-a-adsoyad').value.trim(),
-    a_tel: document.getElementById('e-a-tel').value.trim(),
-    a_il: document.getElementById('e-a-il').value.trim(),
-    a_adres: document.getElementById('e-a-adres').value.trim(),
-    odeme_tipi: document.getElementById('e-odeme-tipi').value,
-    ucret: document.getElementById('e-odeme-tipi').value === 'evet' ? (parseFloat(document.getElementById('e-ucret').value)||0) : 0,
-    aciklama: document.getElementById('e-aciklama').value.trim(),
-    updated_at: new Date().toISOString(),
+    g_adsoyad: document.getElementById('e-g-adsoyad').value.trim(), g_tel: document.getElementById('e-g-tel').value.trim(), g_il: document.getElementById('e-g-il').value.trim(), g_adres: document.getElementById('e-g-adres').value.trim(),
+    a_adsoyad: document.getElementById('e-a-adsoyad').value.trim(), a_tel: document.getElementById('e-a-tel').value.trim(), a_il: document.getElementById('e-a-il').value.trim(), a_adres: document.getElementById('e-a-adres').value.trim(),
+    odeme_tipi: document.getElementById('e-odeme-tipi').value, ucret: document.getElementById('e-odeme-tipi').value === 'evet' ? (parseFloat(document.getElementById('e-ucret').value)||0) : 0, aciklama: document.getElementById('e-aciklama').value.trim(), updated_at: new Date().toISOString(),
   };
   await sb.from('kargolar').update(updates).eq('id', editingKargoId);
-  toast('Kargo güncellendi', 'success');
-  closeModal('edit-modal');
+  toast('Kargo güncellendi', 'success'); closeModal('edit-modal');
   const activePage = document.querySelector('.page.active')?.id;
-  if (activePage === 'page-tumkargolar') loadAdminKargolar();
-  else if (activePage === 'page-kargolarim') loadKargolarim();
+  if (activePage === 'page-tumkargolar') loadAdminKargolar(); else if (activePage === 'page-kargolarim') loadKargolarim();
 }
 
 // ─── RENDER HELPERS ───
 function kargoTable(data, isAdmin) {
-  return `<table>
-    <thead><tr>
-      <th>Takip No</th>
-      ${isAdmin ? '<th>Müşteri</th>' : ''}
-      <th>Gönderici</th><th>Alıcı</th>
-      <th>Durum</th><th>Ödeme</th><th>Tarih</th><th></th>
-    </tr></thead>
-    <tbody>${data.map(k=>`<tr>
-      <td data-label="Takip No"><span class="tracking-no">${k.tracking_no}</span></td>
-      ${isAdmin ? `<td data-label="Müşteri Hesap" style="font-size:12px;color:var(--text2)">${k.profiles ? k.profiles.first_name+' '+k.profiles.last_name : '—'}</td>` : ''}
-      <td data-label="Gönderici">${k.g_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.g_il||''}</span></td>
-      <td data-label="Alıcı">${k.a_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.a_il||''}</span></td>
-      <td data-label="Kargo Durumu">${badgeHtml(k.durum)}</td>
-      <td data-label="Ödeme Tutarı">${badgeOdeme(k.odeme_durumu)}<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">₺${parseFloat(k.ucret||0).toFixed(2)}</span></td>
-      <td data-label="İşlem Tarihi" style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</td>
-      <td data-label="İşlem"><button class="action-btn" onclick="showKargoDetail('${k.id}')">Kargo Detayını Gör</button></td>
-    </tr>`).join('')}</tbody></table>`;
+  return `<table><thead><tr><th>Takip No</th>${isAdmin ? '<th>Müşteri</th>' : ''}<th>Gönderici</th><th>Alıcı</th><th>Durum</th><th>Ödeme</th><th>Tarih</th><th></th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no">${k.tracking_no}</span></td>${isAdmin ? `<td data-label="Müşteri Hesap" style="font-size:12px;color:var(--text2)">${k.profiles ? k.profiles.first_name+' '+k.profiles.last_name : '—'}</td>` : ''}<td data-label="Gönderici">${k.g_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.g_il||''}</span></td><td data-label="Alıcı">${k.a_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.a_il||''}</span></td><td data-label="Kargo Durumu">${badgeHtml(k.durum)}</td><td data-label="Ödeme Tutarı">${badgeOdeme(k.odeme_durumu)}<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">₺${parseFloat(k.ucret||0).toFixed(2)}</span></td><td data-label="İşlem Tarihi" style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</td><td data-label="İşlem"><button class="action-btn" onclick="showKargoDetail('${k.id}')">Kargo Detayını Gör</button></td></tr>`).join('')}</tbody></table>`;
 }
 
 function kargoTableSmall(data) {
-  return `<table>
-    <thead><tr><th>Takip No</th><th>Alıcı</th><th>Durum</th></tr></thead>
-    <tbody>${data.map(k=>`<tr>
-      <td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td>
-      <td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td>
-      <td data-label="Durum">${badgeHtml(k.durum)}</td>
-    </tr>`).join('')}</tbody></table>`;
+  return `<table><thead><tr><th>Takip No</th><th>Alıcı</th><th>Durum</th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td><td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td><td data-label="Durum">${badgeHtml(k.durum)}</td></tr>`).join('')}</tbody></table>`;
 }
 
 function odemelerTableSmall(data) {
-  return `<table>
-    <thead><tr><th>Takip No</th><th>Alıcı</th><th>Tutar</th></tr></thead>
-    <tbody>${data.map(k=>`<tr>
-      <td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td>
-      <td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td>
-      <td data-label="Tutar" style="font-family:'DM Mono',monospace;font-size:12px">₺${parseFloat(k.ucret||0).toFixed(2)}</td>
-    </tr>`).join('')}</tbody></table>`;
+  return `<table><thead><tr><th>Takip No</th><th>Alıcı</th><th>Tutar</th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td><td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td><td data-label="Tutar" style="font-family:'DM Mono',monospace;font-size:12px">₺${parseFloat(k.ucret||0).toFixed(2)}</td></tr>`).join('')}</tbody></table>`;
 }
 
-function badgeHtml(durum) {
-  const labels = { beklemede:'Beklemede', yolda:'Yolda', teslim:'Teslim Edildi', iptal:'İptal' };
-  return `<span class="badge badge-${durum}">${labels[durum]||durum}</span>`;
-}
-function badgeOdeme(d) {
-  return `<span class="badge badge-${d==='odendi'?'odendi':'bekliyor'}">${d==='odendi'?'Ödendi':'Bekliyor'}</span>`;
-}
-function durumLabel(d) {
-  return { beklemede:'Beklemede', yolda:'Yolda', teslim:'Teslim Edildi', iptal:'İptal' }[d] || d;
-}
-function emptyState(msg) {
-  return `<div class="empty-state"><div class="empty-icon">📦</div><p>${msg}</p></div>`;
-}
-function fmtDate(d) {
-  return new Date(d).toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric' });
-}
-function fmtDateFull(d) {
-  return new Date(d).toLocaleString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' });
-}
+function badgeHtml(durum) { const labels = { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }; return `<span class="badge badge-${durum}">${labels[durum]||durum}</span>`; }
+function badgeOdeme(d) { return `<span class="badge badge-${d==='odendi'?'odendi':'bekliyor'}">${d==='odendi'?'Ödendi':'Bekliyor'}</span>`; }
+function durumLabel(d) { return { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }[d] || d; }
+function emptyState(msg) { return `<div class="empty-state"><div class="empty-icon">📦</div><p>${msg}</p></div>`; }
+function fmtDate(d) { return new Date(d).toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
+function fmtDateFull(d) { return new Date(d).toLocaleString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
 function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
 // ─── ICONS ───
@@ -1709,130 +928,24 @@ function svgUsers() { return `<svg viewBox="0 0 24 24" fill="none" stroke="curre
 function svgChart() { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`; }
 
 // ─── TOAST ───
-function toast(msg, type='') {
-  const el = document.getElementById('toast');
-  el.textContent = msg;
-  el.className = 'show' + (type ? ' '+type : '');
-  setTimeout(()=> el.className = '', 3000);
-}
+function toast(msg, type='') { const el = document.getElementById('toast'); el.textContent = msg; el.className = 'show' + (type ? ' '+type : ''); setTimeout(()=> el.className = '', 3000); }
+['kargo-modal','edit-modal','sql-modal'].forEach(id => { document.getElementById(id)?.addEventListener('click', e => { if (e.target.id === id) closeModal(id); }); });
 
-['kargo-modal','edit-modal','sql-modal'].forEach(id => {
-  document.getElementById(id)?.addEventListener('click', e => {
-    if (e.target.id === id) closeModal(id);
-  });
-});
-
-// ─── KARGO SİLME FONKSİYONU ───
+// ─── KARGO SİLME ───
 async function deleteKargo(id) {
-  const onay = confirm('Bu kargoyu silmek istediğinize emin misiniz? Bu işlem geri alınamaz.');
-  if (!onay) return;
-
+  const onay = confirm('Bu kargoyu silmek istediğinize emin misiniz?'); if (!onay) return;
   const { error } = await sb.from('kargolar').delete().eq('id', id);
-  
-  if (error) {
-    alert('Silinirken bir hata oluştu: ' + error.message);
-    return;
-  }
-  
-  toast('Kargo başarıyla silindi!', 'success');
-  closeModal('kargo-modal');
-  
-  // Bulunduğumuz sayfayı güncelle
+  if (error) { alert('Hata: ' + error.message); return; }
+  toast('Kargo silindi!', 'success'); closeModal('kargo-modal');
   const activePage = document.querySelector('.page.active')?.id;
-  if (activePage === 'page-kargolarim') loadKargolarim();
-  else if (activePage === 'page-tumkargolar') loadAdminKargolar();
-  else if (activePage === 'page-musteridashboard') loadMusteriDashboard();
+  if (activePage === 'page-kargolarim') loadKargolarim(); else if (activePage === 'page-tumkargolar') loadAdminKargolar(); else if (activePage === 'page-musteridashboard') loadMusteriDashboard();
 }
 
-// ─── PROFESYONEL KARGO FİŞİ (YARIM A4 SADE TASARIM) ───
+// ─── FİŞ YAZDIRMA ───
 async function printKargoFisi(id) {
   const { data: k } = await sb.from('kargolar').select('*').eq('id', id).single();
-  
-  // Yarım A4 / A5 oranlarına uygun yeni bir yazdırma penceresi açıyoruz
   const printWindow = window.open('', '_blank', 'width=560,height=794');
-  
-  printWindow.document.write(`
-    <!DOCTYPE html>
-    <html lang="tr">
-    <head>
-    <meta charset="UTF-8">
-    <title>Kargo Fişi - ${k.tracking_no}</title>
-    <style>
-      @page {
-        size: A4 portrait; 
-        margin: 12mm;
-      }
-      *, *::before, *::after { box-sizing: border-box; }
-      body { font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; color: #111; margin: 0; padding: 0; font-size: 10pt; line-height: 1.4; }
-      .header-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
-      .logo-text { font-size: 24pt; letter-spacing: -0.5px; color: #000; }
-      .logo-text strong { font-weight: 900; }
-      .logo-text span { font-weight: 300; color: #333; padding-left: 2px; }
-      .meta-container { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 20px; }
-      .tracking-number { font-size: 12pt; font-weight: bold; color: #333; }
-      .header-meta { font-size: 8.5pt; color: #444; text-align: right; }
-      .address-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-      .address-cell { width: 50%; vertical-align: top; border: 1px solid #111; padding: 12px; }
-      .address-cell.receiver { border-left: none; background-color: #fafafa; }
-      .section-title { font-size: 7.5pt; font-weight: bold; text-transform: uppercase; color: #555; border-bottom: 1px solid #111; padding-bottom: 4px; margin-bottom: 6px; }
-      .name-field { font-size: 10.5pt; font-weight: bold; margin-bottom: 4px; }
-      .address-field { font-size: 9pt; color: #222; min-height: 40px; }
-      .phone-field { font-weight: bold; margin-top: 6px; font-size: 9pt; }
-      .notes-box { border: 1px dashed #444; padding: 10px; font-size: 8.5pt; margin-bottom: 30px; }
-      .payment-wrapper { border-top: 2px solid #000; padding-top: 12px; margin-top: 20px; }
-      .payment-table { width: 100%; border-collapse: collapse; }
-      .payment-info-cell { vertical-align: middle; }
-      .payment-status-title { font-size: 8pt; font-weight: bold; text-transform: uppercase; color: #555; }
-      .payment-status-value { font-size: 11pt; font-weight: bold; margin-top: 2px; }
-      .payment-amount-cell { text-align: right; vertical-align: middle; }
-      .payment-amount-title { font-size: 8pt; font-weight: bold; text-transform: uppercase; color: #555; }
-      .payment-amount-value { font-size: 18pt; font-weight: 900; color: #000; }
-      .footer-notice { text-align: center; font-size: 7pt; color: #777; margin-top: 15px; }
-    </style>
-    </head>
-    <body>
-      <table class="header-table">
-        <tr><td class="logo-text"><strong>EFE</strong><span>KARGO</span></td></tr>
-      </table>
-      <div class="meta-container">
-        <div class="tracking-number">Takip No: ${k.tracking_no}</div>
-        <div class="header-meta">Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>Otomasyon Fişi</div>
-      </div>
-      <table class="address-table">
-        <tr>
-          <td class="address-cell">
-            <div class="section-title">Gönderici</div>
-            <div class="name-field">${k.g_adsoyad}</div>
-            <div class="address-field">${k.g_adres || 'Sistemde Kayıtlı Adres'}<br>${k.g_il || ''}</div>
-            <div class="phone-field">Tel: ${k.g_tel}</div>
-          </td>
-          <td class="address-cell receiver">
-            <div class="section-title">Alıcı</div>
-            <div class="name-field">${k.a_adsoyad}</div>
-            <div class="address-field">${k.a_adres || ''}<br><strong>${k.a_il || ''}</strong></div>
-            <div class="phone-field">Tel: ${k.a_tel || '-'}</div>
-          </td>
-        </tr>
-      </table>
-      <div class="notes-box"><strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama || 'Belirtilmedi'}</div>
-      <div class="payment-wrapper">
-        <table class="payment-table">
-          <tr>
-            <td class="payment-info-cell">
-              <div class="payment-status-title">Ödeme Türü / Durumu</div>
-              <div class="payment-status-value">${k.odeme_tipi === 'evet' ? 'KAPIDA ÖDEME (TAHSİLATLI)' : 'ÖDEME YOK (DİREKT TESLİM)'}</div>
-            </td>
-            <td class="payment-amount-cell">
-              ${k.odeme_tipi === 'evet' ? `<div class="payment-amount-title">Tahsil Edilecek Tutar</div><div class="payment-amount-value">${parseFloat(k.ucret || 0).toLocaleString('tr-TR', {minimumFractionDigits:2})} ₺</div>` : ''}
-            </td>
-          </tr>
-        </table>
-        <div class="footer-notice">Efe Kargo Lojistik Otomasyon Sistemi</div>
-      </div>
-      <script>window.onload = function() { window.print(); window.close(); }<\/script>
-    </body>
-    </html>
-  `);
+  printWindow.document.write(`<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><title>Kargo Fişi - ${k.tracking_no}</title><style>@page{size:A4 portrait;margin:12mm;}*,*::before,*::after{box-sizing:border-box;}body{font-family:'Helvetica Neue','Helvetica','Arial',sans-serif;color:#111;margin:0;padding:0;font-size:10pt;line-height:1.4;}.header-table{width:100%;border-collapse:collapse;margin-bottom:5px;}.logo-text{font-size:24pt;letter-spacing:-0.5px;color:#000;}.logo-text strong{font-weight:900;}.logo-text span{font-weight:300;color:#333;padding-left:2px;}.meta-container{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:20px;}.tracking-number{font-size:12pt;font-weight:bold;color:#333;}.header-meta{font-size:8.5pt;color:#444;text-align:right;}.address-table{width:100%;border-collapse:collapse;margin-bottom:20px;}.address-cell{width:50%;vertical-align:top;border:1px solid #111;padding:12px;}.address-cell.receiver{border-left:none;background-color:#fafafa;}.section-title{font-size:7.5pt;font-weight:bold;text-transform:uppercase;color:#555;border-bottom:1px solid #111;padding-bottom:4px;margin-bottom:6px;}.name-field{font-size:10.5pt;font-weight:bold;margin-bottom:4px;}.address-field{font-size:9pt;color:#222;min-height:40px;}.phone-field{font-weight:bold;margin-top:6px;font-size:9pt;}.notes-box{border:1px dashed #444;padding:10px;font-size:8.5pt;margin-bottom:30px;}.payment-wrapper{border-top:2px solid #000;padding-top:12px;margin-top:20px;}.payment-table{width:100%;border-collapse:collapse;}.payment-info-cell{vertical-align:middle;}.payment-status-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}.payment-status-value{font-size:11pt;font-weight:bold;margin-top:2px;}.payment-amount-cell{text-align:right;vertical-align:middle;}.payment-amount-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}.payment-amount-value{font-size:18pt;font-weight:900;color:#000;}.footer-notice{text-align:center;font-size:7pt;color:#777;margin-top:15px;}</style></head><body><table class="header-table"><tr><td class="logo-text"><strong>EFE</strong><span>KARGO</span></td></tr></table><div class="meta-container"><div class="tracking-number">Takip No: ${k.tracking_no}</div><div class="header-meta">Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>Otomasyon Fişi</div></div><table class="address-table"><tr><td class="address-cell"><div class="section-title">Gönderici</div><div class="name-field">${k.g_adsoyad}</div><div class="address-field">${k.g_adres||'Sistemde Kayıtlı Adres'}<br>${k.g_il||''}</div><div class="phone-field">Tel: ${k.g_tel}</div></td><td class="address-cell receiver"><div class="section-title">Alıcı</div><div class="name-field">${k.a_adsoyad}</div><div class="address-field">${k.a_adres||''}<br><strong>${k.a_il||''}</strong></div><div class="phone-field">Tel: ${k.a_tel||'-'}</div></td></tr></table><div class="notes-box"><strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama||'Belirtilmedi'}</div><div class="payment-wrapper"><table class="payment-table"><tr><td class="payment-info-cell"><div class="payment-status-title">Ödeme Türü / Durumu</div><div class="payment-status-value">${k.odeme_tipi==='evet'?'KAPIDA ÖDEME (TAHSİLATLI)':'ÖDEME YOK (DİREKT TESLİM)'}</div></td><td class="payment-amount-cell">${k.odeme_tipi==='evet'?`<div class="payment-amount-title">Tahsil Edilecek Tutar</div><div class="payment-amount-value">${parseFloat(k.ucret||0).toLocaleString('tr-TR',{minimumFractionDigits:2})} ₺</div>`:''}</td></tr></table><div class="footer-notice">Efe Kargo Lojistik Otomasyon Sistemi</div></div><script>window.onload=function(){window.print();window.close();}<\/script></body></html>`);
   printWindow.document.close();
 }
 </script>
