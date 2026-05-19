@@ -638,10 +638,15 @@ async function checkAuth() {
     await loadProfile(session.user); 
     showApp(); 
   }
+  
   sb.auth.onAuthStateChange(async (event, session) => { 
     if (session) { 
-      await loadProfile(session.user); 
-      showApp(); 
+      // SADECE giriş ekranındaysak uygulamayı baştan çiz ve yükle.
+      // Eğer kullanıcı zaten içerdeyse (token yenileniyorsa) ekranı asla dondurma/sıfırlama!
+      if (document.getElementById('auth-screen').style.display !== 'none') {
+        await loadProfile(session.user); 
+        showApp(); 
+      }
     } else { 
       showAuth(); 
     } 
