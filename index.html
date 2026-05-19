@@ -1328,15 +1328,15 @@ async function loadMusteriler() {
       <tbody>
         ${musteriler.map(m => `
           <tr>
-            <td>
+            <td data-label="Müşteri">
               <div class="customer-chip">
                 <div class="customer-avatar-sm">${(m.first_name[0]||'')+(m.last_name[0]||'')}</div>
                 <span>${m.first_name} ${m.last_name}</span>
               </div>
             </td>
-            <td style="color:var(--text2)">${m.phone||'—'}</td>
-            <td style="color:var(--text2)">${fmtDate(m.created_at)}</td>
-            <td><button class="action-btn" onclick="showMusteriKargolar('${m.id}','${m.first_name} ${m.last_name}')">Kargolarını Gör</button></td>
+            <td data-label="Telefon" style="color:var(--text2)">${m.phone||'—'}</td>
+            <td data-label="Kayıt Tarihi" style="color:var(--text2)">${fmtDate(m.created_at)}</td>
+            <td data-label="İşlem"><button class="action-btn" onclick="showMusteriKargolar('${m.id}','${m.first_name} ${m.last_name}')">Kargolarını Gör</button></td>
           </tr>`).join('')}
       </tbody>
     </table>`;
@@ -1374,10 +1374,10 @@ async function loadRaporlar() {
   document.getElementById('rapor-aylik').innerHTML = months.length ? `<table>
     <thead><tr><th>Ay</th><th>Toplam</th><th>Teslim</th><th>Gelir</th></tr></thead>
     <tbody>${months.map(m=>`<tr>
-      <td style="font-weight:500">${m}</td>
-      <td>${byMonth[m].toplam}</td>
-      <td>${byMonth[m].teslim}</td>
-      <td style="font-family:'DM Mono',monospace;font-size:12px">₺${byMonth[m].gelir.toLocaleString('tr-TR',{minimumFractionDigits:2})}</td>
+      <td data-label="Rapor Ayı" style="font-weight:500">${m}</td>
+      <td data-label="Toplam Kargo">${byMonth[m].toplam} Adet</td>
+      <td data-label="Teslim Edilen">${byMonth[m].teslim} Adet</td>
+      <td data-label="Aylık Gelir" style="font-family:'DM Mono',monospace;font-size:12px">₺${byMonth[m].gelir.toLocaleString('tr-TR',{minimumFractionDigits:2})}</td>
     </tr>`).join('')}</tbody></table>` : emptyState('Veri yok');
 }
 
