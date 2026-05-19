@@ -615,6 +615,7 @@ function copySql() {
   toast('SQL kopyalandı!', 'success'); 
 }
 
+// ─── GÜNCELLENMİŞ VE DONDURMAYAN GİRİŞ KONTROLÜ ───
 async function checkAuth() {
   const { data: { session } } = await sb.auth.getSession();
   if (session) { 
@@ -624,8 +625,7 @@ async function checkAuth() {
   
   sb.auth.onAuthStateChange(async (event, session) => { 
     if (session) { 
-      // SADECE giriş ekranındaysak uygulamayı baştan çiz ve yükle.
-      // Eğer kullanıcı zaten içerdeyse (token yenileniyorsa) ekranı asla dondurma/sıfırlama!
+      // Sadece giriş ekranındaysa uygulamayı yükle (Arka plan yenilemelerinde ekranı dondurmaz)
       if (document.getElementById('auth-screen').style.display !== 'none') {
         await loadProfile(session.user); 
         showApp(); 
@@ -647,7 +647,7 @@ async function loadProfile(user) {
   currentProfile = data;
 }
 
-
+// Kayıt olma kodları temizlendi (Sistem Private oldu)
 async function login() { 
   const email = document.getElementById('login-email').value;
   const pass = document.getElementById('login-pass').value;
@@ -661,16 +661,6 @@ async function login() {
   btn.disabled = false; 
   btn.textContent = 'Giriş Yap'; 
   if (error) showAuthError(error.message); 
-}
-
-  if (data.user) { 
-    await sb.from('profiles').insert({ id: data.user.id, first_name: first, last_name: last, phone, role: 'musteri' }); 
-  }
-  
-  btn.disabled = false; 
-  btn.textContent = 'Hesap Oluştur'; 
-  toast('Hesap oluşturuldu! Giriş yapabilirsiniz.', 'success'); 
-  switchAuthTab('login');
 }
 
 function showAuthError(msg) { 
@@ -866,28 +856,23 @@ async function loadMusteriDashboard() {
   const { data } = await sb.from('kargolar').select('*').eq('user_id', currentUser.id); 
   const all = data || [];
   
-  // İçinde bulunduğumuz ayı bul (Örn: "2026-05")
   const currentMonth = new Date().toISOString().slice(0,7);
-  
-  // Sadece bu aya ait kargoları filtrele
   const currentMonthCargos = all.filter(k => k.created_at.startsWith(currentMonth));
   
-  const statConfig = [ 
-    { label: 'Toplam Kargo', value: all.length, sub: 'tüm zamanlar', color: 'accent', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>' }, 
-    { label: 'Beklemede', value: currentMonthCargos.filter(k=>k.durum==='beklemede').length, sub: 'bu ay', color: 'orange', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' }, 
-    { label: 'Teslim Edildi', value: currentMonthCargos.filter(k=>k.durum==='teslim').length, sub: 'bu ay', color: 'green', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>' }, 
-    { label: 'İptal Edilen', value: currentMonthCargos.filter(k=>k.durum==='iptal').length, sub: 'bu ay', color: 'red', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' }
+  const stats = [ 
+    { label: 'Toplam Kargo', value: all.length, sub: 'tüm zamanlar' }, 
+    { label: 'Beklemede', value: currentMonthCargos.filter(k=>k.durum==='beklemede').length, sub: 'bu ay' }, 
+    { label: 'Teslim Edildi', value: currentMonthCargos.filter(k=>k.durum==='teslim').length, sub: 'bu ay' }, 
+    { label: 'İptal Edilen', value: currentMonthCargos.filter(k=>k.durum==='iptal').length, sub: 'bu ay' } 
   ];
   
-  document.getElementById('musteri-stats').innerHTML = statConfig.map(s => `
-    <div class="stat-card color-${s.color}">
-      <div class="stat-card-icon">${s.icon}</div>
+  document.getElementById('musteri-stats').innerHTML = stats.map(s => `
+    <div class="stat-card">
       <div class="stat-label">${s.label}</div>
       <div class="stat-value">${s.value}</div>
       <div class="stat-sub">${s.sub}</div>
     </div>`).join('');
     
-  // Son Kargolarım listesinde de sadece BU AYIN kargolarını göster
   const son5 = currentMonthCargos.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at)).slice(0,5); 
   document.getElementById('musteri-son-kargolar').innerHTML = son5.length ? kargoTable(son5, false) : emptyState('Bu ay henüz kargo yok');
 }
@@ -949,13 +934,12 @@ async function loadMusteriraporlar() {
   const odenenCari = tahsilatli.filter(k => k.odeme_durumu === 'odendi').reduce((sum, k) => sum + parseFloat(k.ucret || 0), 0);
 
   document.getElementById('musteri-rapor-stats').innerHTML = [
-    { label: 'Toplam Gönderilen Kargo', value: toplam + ' Adet', color: 'accent', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>' },
-    { label: 'Sırada / Onay Bekleyen', value: beklemede + ' Adet', color: 'orange', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' },
-    { label: 'Teslim Edilen Başarılı', value: teslim + ' Adet', color: 'green', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>' },
-    { label: 'İptal / İade Olanlar', value: iptal + ' Adet', color: 'red', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' }
+    { label: 'Toplam Gönderilen Kargo', value: toplam + ' Adet' },
+    { label: 'Sırada / Onay Bekleyen', value: beklemede + ' Adet' },
+    { label: 'Teslim Edilen Başarılı', value: teslim + ' Adet' },
+    { label: 'İptal / İade Olanlar', value: iptal + ' Adet' }
   ].map(s => `
-    <div class="stat-card color-${s.color}">
-      <div class="stat-card-icon">${s.icon}</div>
+    <div class="stat-card">
       <div class="stat-label">${s.label}</div>
       <div class="stat-value" style="font-size:20px">${s.value}</div>
     </div>`).join('');
@@ -971,22 +955,20 @@ async function loadAdminDashboard() {
   const { data: kargolar } = await sb.from('kargolar').select('*'); 
   const all = kargolar || [];
   
-  // İçinde bulunduğumuz ayı bul
   const currentMonth = new Date().toISOString().slice(0,7);
   const currentMonthCargos = all.filter(k => k.created_at.startsWith(currentMonth));
   
   const totalGelir = currentMonthCargos.filter(k=>k.odeme_durumu==='odendi').reduce((s,k)=>s+parseFloat(k.ucret||0),0);
   
-  const adminStatConfig = [ 
-    { label: 'Toplam Kargo', value: all.length, sub: 'tüm zamanlar', color: 'accent', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>' }, 
-    { label: 'Teslim Edildi', value: currentMonthCargos.filter(k=>k.durum==='teslim').length, sub: 'bu ay', color: 'green', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="20 6 9 17 4 12"/></svg>' }, 
-    { label: 'Bekleyen Ödeme', value: currentMonthCargos.filter(k=>k.odeme_durumu==='bekliyor').length, sub: 'bu ay', color: 'orange', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>' }, 
-    { label: 'Toplam Gelir', value: '₺' + totalGelir.toLocaleString('tr-TR', {minimumFractionDigits:2}), sub: 'bu ay', color: 'blue', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>' }
+  const stats = [ 
+    { label: 'Toplam Kargo', value: all.length, sub: 'tüm zamanlar' }, 
+    { label: 'Teslim Edildi', value: currentMonthCargos.filter(k=>k.durum==='teslim').length, sub: 'bu ay' }, 
+    { label: 'Bekleyen Ödeme', value: currentMonthCargos.filter(k=>k.odeme_durumu==='bekliyor').length, sub: 'bu ay' }, 
+    { label: 'Toplam Gelir', value: '₺' + totalGelir.toLocaleString('tr-TR', {minimumFractionDigits:2}), sub: 'bu ay' } 
   ];
   
-  document.getElementById('admin-stats').innerHTML = adminStatConfig.map(s => `
-    <div class="stat-card color-${s.color}">
-      <div class="stat-card-icon">${s.icon}</div>
+  document.getElementById('admin-stats').innerHTML = stats.map(s => `
+    <div class="stat-card">
       <div class="stat-label">${s.label}</div>
       <div class="stat-value" style="font-size:${typeof s.value==='string'&&s.value.length>6?'18px':'24px'}">${s.value}</div>
       <div class="stat-sub">${s.sub}</div>
@@ -1444,7 +1426,7 @@ function durumLabel(d) {
 }
 
 function emptyState(msg) { 
-  return `<div class="empty-state"><div class="empty-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div><p>${msg}</p></div>`; 
+  return `<div class="empty-state"><div class="empty-icon">📦</div><p>${msg}</p></div>`; 
 }
 
 function fmtDate(d) { 
@@ -1586,16 +1568,12 @@ async function printKargoFisi(id) {
 document.addEventListener("visibilitychange", async () => {
   if (document.visibilityState === "visible" && currentUser) {
     try {
-      // Arka planda sadece oturum biletini kontrol et ve tazele. 
-      // EKRANDAKİ VERİLERİ SİLME (Yükleniyor ekranı çıkartma!)
       const { data: { session }, error } = await sb.auth.getSession();
-      
       if (error || !session) {
-        // Oturum bileti tamamen ölmüşse ve yenilenemiyorsa sayfayı yenile.
         location.reload(); 
       }
     } catch (err) {
-      console.log("Uyandırma servisi ağ hatasını yoksaydı:", err);
+      console.log("Ağ hatası", err);
     }
   }
 });
