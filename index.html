@@ -1621,24 +1621,20 @@ async function printKargoFisi(id) {
   printWindow.document.close();
 }
 
-// ─── OTOMATİK UYANDIRMA SERVİSİ (ARKA PLAN DONMALARINI ÖNLER) ───
+// ─── OTOMATİK UYANDIRMA SERVİSİ (DÜZELTİLMİŞ) ───
 document.addEventListener("visibilitychange", async () => {
   if (document.visibilityState === "visible" && currentUser) {
-    // Kullanıcı sekmeye geri döndüğünde Supabase oturumunu zorla yenile/kontrol et
-    const { data: { session }, error } = await sb.auth.getSession();
-    
-    if (error || !session) {
-      // Oturum tamamen zaman aşımına uğramışsa güvenlik için çıkış yap
-      logout(); 
-    } else {
-      // Oturum başarılıysa, ekrandaki donmaları önlemek için aktif sayfayı sessizce tazele
-      const activePage = document.querySelector('.page.active')?.id;
-      if (activePage === 'page-musteridashboard') loadMusteriDashboard();
-      else if (activePage === 'page-admindashboard') loadAdminDashboard();
-      else if (activePage === 'page-kargolarim') loadKargolarim();
-      else if (activePage === 'page-tumkargolar') loadAdminKargolar();
-      else if (activePage === 'page-musteriraporlar') loadMusteriraporlar();
-      else if (activePage === 'page-raporlar') loadRaporlar();
+    try {
+      // Arka planda sadece oturum biletini kontrol et ve tazele. 
+      // EKRANDAKİ VERİLERİ SİLME (Yükleniyor ekranı çıkartma!)
+      const { data: { session }, error } = await sb.auth.getSession();
+      
+      if (error || !session) {
+        // Oturum bileti tamamen ölmüşse ve yenilenemiyorsa sayfayı yenile.
+        location.reload(); 
+      }
+    } catch (err) {
+      console.log("Uyandırma servisi ağ hatasını yoksaydı:", err);
     }
   }
 });
