@@ -8,163 +8,56 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #F5F4F0;
-      --surface: #FFFFFF;
-      --surface2: #F0EEE8;
-      --border: #E2DFD6;
-      --border2: #C8C4BA;
-      --text: #1A1916;
-      --text2: #6B6860;
-      --text3: #9C9A94;
-      --accent: #1A3A2A;
-      --accent-light: #E8F2EC;
-      --accent-mid: #2D6B48;
-      --danger: #C0392B;
-      --danger-light: #FDECEA;
-      --warn: #B7600E;
-      --warn-light: #FEF3E6;
-      --success: #1E6B3A;
-      --success-light: #E8F5EE;
-      --info: #1A4A7A;
-      --info-light: #E8F0F8;
-      --radius: 10px;
-      --radius-lg: 14px;
-      --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+      --bg: #F5F4F0; --surface: #FFFFFF; --surface2: #F0EEE8; --border: #E2DFD6; --border2: #C8C4BA; 
+      --text: #1A1916; --text2: #6B6860; --text3: #9C9A94; --accent: #1A3A2A; --accent-light: #E8F2EC; 
+      --accent-mid: #2D6B48; --danger: #C0392B; --danger-light: #FDECEA; --warn: #B7600E; --warn-light: #FEF3E6; 
+      --success: #1E6B3A; --success-light: #E8F5EE; --info: #1A4A7A; --info-light: #E8F0F8; 
+      --radius: 10px; --radius-lg: 14px; --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
     }
 
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; min-height: 100vh; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14px;
-      min-height: 100vh;
-    }
-
-    select {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231A3A2A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
-      background-repeat: no-repeat !important;
-      background-position: right 12px center !important;
-      background-size: 16px !important;
-      padding-right: 36px !important;
-      cursor: pointer;
+    select { 
+      -webkit-appearance: none; -moz-appearance: none; appearance: none; 
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231A3A2A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important; 
+      background-repeat: no-repeat !important; background-position: right 12px center !important; 
+      background-size: 16px !important; padding-right: 36px !important; cursor: pointer; 
     }
     select::-ms-expand { display: none; }
 
-    #config-modal {
-      position: fixed; inset: 0;
-      background: rgba(10,10,8,0.7);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 9999;
-    }
-    .config-box {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      width: 480px;
-      max-width: 95vw;
-    }
+    #config-modal { position: fixed; inset: 0; background: rgba(10,10,8,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+    .config-box { background: var(--surface); border-radius: var(--radius-lg); padding: 2rem; width: 480px; max-width: 95vw; }
     .config-box h2 { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
     .config-box p { color: var(--text2); margin-bottom: 1.5rem; font-size: 13px; line-height: 1.6; }
     .config-box label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 4px; }
-    .config-box input {
-      width: 100%; padding: 9px 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 13px; font-family: 'DM Mono', monospace;
-      margin-bottom: 1rem;
-      background: var(--bg);
-      color: var(--text);
-      outline: none;
-    }
+    .config-box input { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Mono', monospace; margin-bottom: 1rem; background: var(--bg); color: var(--text); outline: none; }
     .config-box input:focus { border-color: var(--accent-mid); }
+    .config-note { background: var(--info-light); border: 1px solid #B5D4F4; border-radius: var(--radius); padding: 10px 14px; font-size: 12px; color: var(--info); margin-bottom: 1.5rem; line-height: 1.6; }
+    .config-note code { font-family: 'DM Mono', monospace; background: rgba(255,255,255,0.6); padding: 1px 4px; border-radius: 4px; }
 
-    #auth-screen {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background: var(--bg);
-    }
-    .auth-card {
-      background: var(--surface);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      width: 420px;
-      max-width: 95vw;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-    }
-    .auth-logo {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 2rem;
-    }
-    .auth-logo-icon {
-      width: 38px; height: 38px;
-      background: var(--accent);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-    }
+    #auth-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--bg); }
+    .auth-card { background: var(--surface); border-radius: var(--radius-lg); padding: 2.5rem; width: 420px; max-width: 95vw; box-shadow: var(--shadow); border: 1px solid var(--border); }
+    .auth-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2rem; }
+    .auth-logo-icon { width: 38px; height: 38px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
     .auth-logo-icon svg { width: 20px; height: 20px; fill: none; stroke: white; stroke-width: 2; }
     .auth-logo span { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
     .auth-logo sub { font-size: 11px; color: var(--text3); display: block; line-height: 1; }
-    .auth-tabs {
-      display: flex; gap: 4px;
-      background: var(--surface2);
-      padding: 4px;
-      border-radius: var(--radius);
-      margin-bottom: 1.5rem;
-    }
-    .auth-tab {
-      flex: 1; padding: 7px 12px;
-      border: none; background: none;
-      border-radius: 7px;
-      font-size: 13px; font-weight: 500; cursor: pointer;
-      color: var(--text2);
-      transition: all 0.15s;
-    }
+    .auth-tabs { display: flex; gap: 4px; background: var(--surface2); padding: 4px; border-radius: var(--radius); margin-bottom: 1.5rem; }
+    .auth-tab { flex: 1; padding: 7px 12px; border: none; background: none; border-radius: 7px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--text2); transition: all 0.15s; }
     .auth-tab.active { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
     .form-group { margin-bottom: 14px; }
     .form-group label { display: block; font-size: 12px; font-weight: 500; color: var(--text2); margin-bottom: 5px; }
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%; padding: 9px 12px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      font-size: 13px; font-family: 'DM Sans', sans-serif;
-      background: var(--bg); color: var(--text);
-      outline: none; transition: border-color 0.15s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--accent-mid);
-      background: var(--surface);
-    }
+    .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 13px; font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); outline: none; transition: border-color 0.15s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-mid); background: var(--surface); }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .btn {
-      width: 100%; padding: 10px;
-      border: none; border-radius: var(--radius);
-      font-size: 14px; font-weight: 500; cursor: pointer;
-      transition: all 0.15s;
-    }
+    .btn { width: 100%; padding: 10px; border: none; border-radius: var(--radius); font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; }
     .btn-primary { background: var(--accent); color: white; }
     .btn-primary:hover { background: var(--accent-mid); }
     .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-outline {
-      background: none; border: 1px solid var(--border2);
-      color: var(--text);
-    }
+    .btn-outline { background: none; border: 1px solid var(--border2); color: var(--text); }
     .btn-outline:hover { background: var(--surface2); }
-    .btn-danger-outline {
-      background: none; border: 1px solid #E2B0AA;
-      color: var(--danger); font-size: 13px;
-      padding: 7px 14px; width: auto;
-      border-radius: var(--radius);
-    }
+    .btn-danger-outline { background: none; border: 1px solid #E2B0AA; color: var(--danger); font-size: 13px; padding: 7px 14px; width: auto; border-radius: var(--radius); }
     .btn-sm { width: auto; padding: 6px 14px; font-size: 12px; border-radius: 7px; }
     .auth-error { background: var(--danger-light); border: 1px solid #F7C1C1; color: var(--danger); padding: 10px 14px; border-radius: var(--radius); font-size: 13px; margin-bottom: 14px; }
     .auth-switch { text-align: center; margin-top: 1rem; font-size: 13px; color: var(--text2); }
@@ -261,11 +154,15 @@
 
     .filters { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 1rem; }
     .filters select { padding: 6px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; background: var(--surface); color: var(--text); outline: none; cursor: pointer; }
+    
     .action-btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px; border-radius: 7px; border: 1px solid var(--border); background: none; font-size: 12px; color: var(--text2); cursor: pointer; transition: all 0.12s; }
     .action-btn:hover { background: var(--surface2); color: var(--text); }
     .action-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
     .action-btn.primary:hover { background: var(--accent-mid); }
     .action-btn svg { width: 13px; height: 13px; }
+
+    /* TABLO İÇİ YAZDIR VE DETAY BUTON HİZALAMASI (MASAÜSTÜ) */
+    .table-actions { display: flex; gap: 8px; justify-content: flex-end; align-items: center; }
 
     .welcome-banner { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%); border-radius: var(--radius-lg); padding: 1.5rem; color: white; margin-bottom: 1.75rem; display: flex; justify-content: space-between; align-items: center; }
     .welcome-banner h2 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
@@ -326,7 +223,11 @@
       td::before { content: attr(data-label); font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; }
       td:last-child { margin-top: 6px; padding-top: 8px !important; border-top: 1px solid var(--surface2) !important; justify-content: center; }
       td:last-child::before { display: none; }
-      td:last-child .action-btn { width: 100%; justify-content: center; padding: 8px; background: var(--surface2); font-size: 12px; font-weight: 600; }
+      
+      /* MOBİLDE YAZDIR BUTONUNU GİZLE VE DETAY BUTONUNU EKRANA YAY */
+      .print-btn-desktop { display: none !important; }
+      td:last-child .table-actions { width: 100%; display: flex; }
+      td:last-child .table-actions .action-btn { width: 100%; justify-content: center; padding: 8px; background: var(--surface2); font-size: 12px; font-weight: 600; }
       
       .modal-overlay { padding: 0; align-items: flex-end; z-index: 9999; }
       .modal { width: 100% !important; max-width: 100%; height: 85vh; border-radius: 20px 20px 0 0; display: flex; flex-direction: column; animation: slideUp 0.3s ease-out; }
@@ -346,7 +247,10 @@
 
 <div id="sql-modal" class="modal-overlay" style="display:none; z-index:10000;">
   <div class="modal" style="width:680px;">
-    <div class="modal-header"><h3>📋 Supabase SQL Tabloları</h3><button class="modal-close" onclick="document.getElementById('sql-modal').style.display='none'">✕</button></div>
+    <div class="modal-header">
+      <h3>📋 Supabase SQL Tabloları</h3>
+      <button class="modal-close" onclick="document.getElementById('sql-modal').style.display='none'">✕</button>
+    </div>
     <div class="modal-body">
       <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;">Supabase Dashboard → SQL Editor → New Query → Aşağıdakini yapıştırın → Run:</p>
       <textarea readonly style="width:100%;height:380px;font-family:'DM Mono',monospace;font-size:11px;padding:12px;border:1px solid var(--border);border-radius:var(--radius);background:var(--bg);color:var(--text);resize:none;outline:none;" id="sql-content"></textarea>
@@ -358,10 +262,18 @@
 <div id="auth-screen">
   <div class="auth-card">
     <div class="auth-logo">
-      <div class="auth-logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
-      <div><span><strong>EFE</strong>KARGO</span><sub>Lojistik Otomasyon Sistemi</sub></div>
+      <div class="auth-logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
+      <div>
+        <span><strong>EFE</strong>KARGO</span>
+        <sub>Lojistik Otomasyon Sistemi</sub>
+      </div>
     </div>
-    <div class="auth-tabs"><button class="auth-tab active" onclick="switchAuthTab('login')">Giriş Yap</button><button class="auth-tab" onclick="switchAuthTab('register')">Kayıt Ol</button></div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="switchAuthTab('login')">Giriş Yap</button>
+      <button class="auth-tab" onclick="switchAuthTab('register')">Kayıt Ol</button>
+    </div>
     <div id="auth-error" class="auth-error" style="display:none;"></div>
     <div id="login-form">
       <div class="form-group"><label>E-posta</label><input type="email" id="login-email" placeholder="ornek@mail.com" /></div>
@@ -369,7 +281,10 @@
       <button class="btn btn-primary" id="login-btn" onclick="login()">Giriş Yap</button>
     </div>
     <div id="register-form" style="display:none;">
-      <div class="form-row"><div class="form-group"><label>Ad</label><input type="text" id="reg-first" placeholder="Ahmet" /></div><div class="form-group"><label>Soyad</label><input type="text" id="reg-last" placeholder="Yılmaz" /></div></div>
+      <div class="form-row">
+        <div class="form-group"><label>Ad</label><input type="text" id="reg-first" placeholder="Ahmet" /></div>
+        <div class="form-group"><label>Soyad</label><input type="text" id="reg-last" placeholder="Yılmaz" /></div>
+      </div>
       <div class="form-group"><label>E-posta</label><input type="email" id="reg-email" placeholder="ornek@mail.com" /></div>
       <div class="form-group"><label>Telefon</label><input type="tel" id="reg-phone" placeholder="0532 000 0000" /></div>
       <div class="form-group"><label>Şifre</label><input type="password" id="reg-pass" placeholder="En az 6 karakter" /></div>
@@ -381,14 +296,19 @@
 <div id="app">
   <aside class="sidebar">
     <div class="sidebar-logo">
-      <div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
       <span class="logo-text"><strong>EFE</strong><span style="font-weight: 300;">KARGO</span></span>
     </div>
     <nav class="nav" id="nav-container"></nav>
     <div class="sidebar-user">
       <div class="user-info">
         <div class="user-avatar" id="user-avatar-text">AY</div>
-        <div><div class="user-name" id="user-display-name">Kullanıcı</div><div class="user-role" id="user-display-role">Müşteri</div></div>
+        <div>
+          <div class="user-name" id="user-display-name">Kullanıcı</div>
+          <div class="user-role" id="user-display-role">Müşteri</div>
+        </div>
       </div>
       <button class="logout-btn" onclick="logout()">Çıkış Yap</button>
     </div>
@@ -399,31 +319,60 @@
       <div class="page-header"><h1>Genel Bakış</h1><p>Kargolarınızın özeti</p></div>
       <div class="welcome-banner">
         <div><h2 id="welcome-name">Hoş geldiniz</h2><p>Yeni kargo oluşturabilir veya takip edebilirsiniz.</p></div>
-        <button class="action-btn primary" onclick="showPage('page-yenikargo')" style="white-space:nowrap;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Yeni Kargo</button>
+        <button class="action-btn primary" onclick="showPage('page-yenikargo')" style="white-space:nowrap;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg> Yeni Kargo
+        </button>
       </div>
       <div class="stats-grid" id="musteri-stats"></div>
-      <div class="card"><div class="card-header"><h3>Son Kargolarım</h3></div><div id="musteri-son-kargolar"><div class="loading"><div class="spinner"></div> Yükleniyor...</div></div></div>
+      <div class="card">
+        <div class="card-header"><h3>Son Kargolarım</h3></div>
+        <div id="musteri-son-kargolar"><div class="loading"><div class="spinner"></div> Yükleniyor...</div></div>
+      </div>
     </div>
 
     <div id="page-yenikargo" class="page">
       <div class="page-header"><h1>Yeni Kargo Oluştur</h1><p>Kargo bilgilerini doldurun</p></div>
-      <div class="card" style="max-width:600px;"><div class="card-body">
-          <div class="detail-section" style="display: none;"><div class="form-group"><label>Ad Soyad</label><input type="text" id="g-adsoyad" /></div><div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="g-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="g-il" /></div></div><div class="form-group"><label>Açık Adres</label><textarea id="g-adres" rows="2"></textarea></div></div>
-          <div class="detail-section"><h4>Alıcı Bilgileri</h4><div class="form-group"><label>Ad Soyad</label><input type="text" id="a-adsoyad" /></div><div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="a-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="a-il" /></div></div><div class="form-group"><label>Açık Adres</label><textarea id="a-adres" rows="2"></textarea></div></div>
-          <div class="detail-section"><h4>Kargo Detayları</h4><div class="form-row"><div class="form-group"><label>Ödeme Alınacak mı?</label><select id="odeme-tipi" onchange="toggleUcret('ucret', this.value)"><option value="hayir">Hayır</option><option value="evet">Evet (Tahsilatlı)</option></select></div><div class="form-group" id="ucret-kapsayici" style="display: none;"><label>Alınacak Tutar (₺)</label><input type="number" id="ucret" placeholder="0.00" min="0" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')"/></div></div><div class="form-group"><label>Kargo Açıklaması (opsiyonel)</label><textarea id="aciklama" rows="2" placeholder="İçerik, not..."></textarea></div></div>
+      <div class="card" style="max-width:600px;">
+        <div class="card-body">
+          <div class="detail-section" style="display: none;">
+            <div class="form-group"><label>Ad Soyad</label><input type="text" id="g-adsoyad" /></div>
+            <div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="g-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="g-il" /></div></div>
+            <div class="form-group"><label>Açık Adres</label><textarea id="g-adres" rows="2"></textarea></div>
+          </div>
+          <div class="detail-section">
+            <h4>Alıcı Bilgileri</h4>
+            <div class="form-group"><label>Ad Soyad</label><input type="text" id="a-adsoyad" /></div>
+            <div class="form-row"><div class="form-group"><label>Telefon</label><input type="tel" id="a-tel" /></div><div class="form-group"><label>İl</label><input type="text" id="a-il" /></div></div>
+            <div class="form-group"><label>Açık Adres</label><textarea id="a-adres" rows="2"></textarea></div>
+          </div>
+          <div class="detail-section">
+            <h4>Kargo Detayları</h4>
+            <div class="form-row">
+              <div class="form-group"><label>Ödeme Alınacak mı?</label><select id="odeme-tipi" onchange="toggleUcret('ucret', this.value)"><option value="hayir">Hayır</option><option value="evet">Evet (Tahsilatlı)</option></select></div>
+              <div class="form-group" id="ucret-kapsayici" style="display: none;"><label>Alınacak Tutar (₺)</label><input type="number" id="ucret" placeholder="0.00" min="0" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')"/></div>
+            </div>
+            <div class="form-group"><label>Kargo Açıklaması (opsiyonel)</label><textarea id="aciklama" rows="2" placeholder="İçerik, not..."></textarea></div>
+          </div>
           <button class="btn btn-primary" onclick="createKargo()">Kargo Oluştur</button>
-      </div></div>
+        </div>
+      </div>
     </div>
 
     <div id="page-kargolarim" class="page">
       <div class="page-header"><h1>Kargolarım</h1><p>Tüm kargolarınızın listesi</p></div>
-      <div class="card"><div class="card-header">
-          <div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Takip no veya alıcı ara..." oninput="filterMusteriKargolar(this.value)" /></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="search-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" placeholder="Takip no veya alıcı ara..." oninput="filterMusteriKargolar(this.value)" />
+          </div>
           <div class="filters" style="display:flex;gap:10px;">
             <select id="musteri-ay-filter" onchange="filterMusteriKargolarAy(this.value)"><option value="">Tüm Dönemler</option></select>
             <select onchange="filterMusteriKargolarDurum(this.value)"><option value="">Tüm Durumlar</option><option value="beklemede">Beklemede</option><option value="teslim">Teslim Edildi</option><option value="iptal">İptal</option></select>
           </div>
-        </div><div id="kargolarim-table"><div class="loading"><div class="spinner"></div> Yükleniyor...</div></div></div>
+        </div>
+        <div id="kargolarim-table"><div class="loading"><div class="spinner"></div> Yükleniyor...</div></div>
+      </div>
     </div>
 
     <div id="page-musteriraporlar" class="page">
@@ -431,7 +380,7 @@
       <div class="card" style="margin-bottom: 1.5rem;">
         <div class="card-header">
           <h3>Dönem / Parti Seçimi</h3>
-          <div class="filters"><select id="musteri-rapor-ay-filter" onchange="loadMusteriRaporlar()"><option value="">Tüm Dönemler</option></select></div>
+          <div class="filters"><select id="musteri-rapor-ay-filter" onchange="loadMusteriraporlar()"><option value="">Tüm Dönemler</option></select></div>
         </div>
       </div>
       <div class="stats-grid" id="musteri-rapor-stats"></div>
@@ -444,13 +393,20 @@
     <div id="page-admindashboard" class="page">
       <div class="page-header"><h1>Yönetim Paneli</h1><p>Sistem genel durumu</p></div>
       <div class="stats-grid" id="admin-stats"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem;"><div class="card"><div class="card-header"><h3>Son Kargolar</h3></div><div id="admin-son-kargolar"></div></div><div class="card"><div class="card-header"><h3>Bekleyen Ödemeler</h3></div><div id="admin-bekleyen-odemeler"></div></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.25rem;">
+        <div class="card"><div class="card-header"><h3>Son Kargolar</h3></div><div id="admin-son-kargolar"></div></div>
+        <div class="card"><div class="card-header"><h3>Bekleyen Ödemeler</h3></div><div id="admin-bekleyen-odemeler"></div></div>
+      </div>
     </div>
 
     <div id="page-tumkargolar" class="page">
       <div class="page-header"><h1>Tüm Kargolar</h1></div>
-      <div class="card"><div class="card-header">
-          <div class="search-bar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Takip no, gönderici, alıcı..." oninput="filterAdminKargolar(this.value)" /></div>
+      <div class="card">
+        <div class="card-header">
+          <div class="search-bar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" placeholder="Takip no, gönderici, alıcı..." oninput="filterAdminKargolar(this.value)" />
+          </div>
           <div class="filters" style="display:flex;gap:10px;align-items:center;">
             <div class="desktop-filters" style="display:flex;gap:10px;">
               <select id="admin-durum-filter" onchange="loadAdminKargolar()"><option value="">Tüm Durumlar</option><option value="beklemede">Beklemede</option><option value="teslim">Teslim Edildi</option><option value="iptal">İptal</option></select>
@@ -458,8 +414,13 @@
             </div>
             <select id="admin-ay-filter" onchange="loadAdminKargolar()"><option value="">Tüm Dönemler</option></select>
           </div>
-          <div class="mobile-filters-container"><button id="m-btn-beklemede" class="mobile-filter-btn active" onclick="setMobileAdminFilter('beklemede')">Beklemede</button><button id="m-btn-teslim" class="mobile-filter-btn" onclick="setMobileAdminFilter('teslim')">Teslim Edildi</button></div>
-        </div><div id="admin-kargolar-table"></div></div>
+          <div class="mobile-filters-container">
+            <button id="m-btn-beklemede" class="mobile-filter-btn active" onclick="setMobileAdminFilter('beklemede')">Beklemede</button>
+            <button id="m-btn-teslim" class="mobile-filter-btn" onclick="setMobileAdminFilter('teslim')">Teslim Edildi</button>
+          </div>
+        </div>
+        <div id="admin-kargolar-table"></div>
+      </div>
     </div>
 
     <div id="page-musteriler" class="page">
@@ -476,13 +437,39 @@
         </div>
       </div>
       <div class="stats-grid" id="rapor-stats" style="grid-template-columns:repeat(3,1fr);"></div>
-      <div class="card" style="margin-top:1.25rem;"><div class="card-header"><h3>Aylık Kargo Özeti (Genel Akış)</h3></div><div id="rapor-aylik"></div></div>
+      <div class="card" style="margin-top:1.25rem;">
+        <div class="card-header"><h3>Aylık Kargo Özeti (Genel Akış)</h3></div>
+        <div id="rapor-aylik"></div>
+      </div>
     </div>
   </main>
 </div>
 
-<div id="kargo-modal" class="modal-overlay" style="display:none;"><div class="modal"><div class="modal-header"><h3 id="modal-title">Kargo Detayı</h3><button class="modal-close" onclick="closeModal('kargo-modal')">✕</button></div><div class="modal-body" id="modal-body"></div><div class="modal-footer" id="modal-footer"></div></div></div>
-<div id="edit-modal" class="modal-overlay" style="display:none;"><div class="modal"><div class="modal-header"><h3>Kargo Düzenle</h3><button class="modal-close" onclick="closeModal('edit-modal')">✕</button></div><div class="modal-body" id="edit-body"></div><div class="modal-footer"><button class="btn btn-outline btn-sm" onclick="closeModal('edit-modal')">İptal</button><button class="btn btn-primary btn-sm" onclick="saveEdit()">Kaydet</button></div></div></div>
+<div id="kargo-modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modal-title">Kargo Detayı</h3>
+      <button class="modal-close" onclick="closeModal('kargo-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-footer" id="modal-footer"></div>
+  </div>
+</div>
+
+<div id="edit-modal" class="modal-overlay" style="display:none;">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Kargo Düzenle</h3>
+      <button class="modal-close" onclick="closeModal('edit-modal')">✕</button>
+    </div>
+    <div class="modal-body" id="edit-body"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline btn-sm" onclick="closeModal('edit-modal')">İptal</button>
+      <button class="btn btn-primary btn-sm" onclick="saveEdit()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -845,7 +832,6 @@ function applyMusteriFilters() {
   document.getElementById('kargolarim-table').innerHTML = musteriKargolarFiltered.length ? kargoTable(musteriKargolarFiltered, false) : emptyState('Kargo bulunamadı');
 }
 
-// ─── MÜŞTERİ ÖZEL RAPORLAMA MOTORU (YENİ EKLENDİ) ───
 async function loadMusteriraporlar() {
   document.getElementById('musteri-rapor-stats').innerHTML = '<div class="loading"><div class="spinner"></div> Hesaplamalar Yapılıyor...</div>';
   const { data } = await sb.from('kargolar').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: false });
@@ -1028,12 +1014,10 @@ window.updateCariView = function() {
   document.getElementById('cari-kargolar-listesi').innerHTML = filtered.length ? kargoTable(filtered, true) : emptyState('Seçili döneme ait kargo bulunamadı');
 }
 
-// ─── ADMİN RAPORLARI VE TAHSİLAT TUTARI GÜNCELLEMESİ (DÜZELTİLDİ) ───
 async function loadRaporlar() {
   const { data: kargolar } = await sb.from('kargolar').select('*'); 
   const all = kargolar || [];
   
-  // Rapor sayfasına akıllı tarih süzgeci entegre edildi
   const selectedMonth = document.getElementById('admin-rapor-ay-filter')?.value;
   const filtered = selectedMonth ? all.filter(k => k.created_at.startsWith(selectedMonth)) : all;
   
@@ -1182,15 +1166,23 @@ async function showKargoDetail(id) {
 async function updateKargoDurum(id) {
   const durum = document.getElementById('durum-select').value;
   const odeme = document.getElementById('odeme-select').value;
+  
   await sb.from('kargolar').update({ durum, odeme_durumu: odeme, updated_at: new Date().toISOString() }).eq('id', id); 
   await sb.from('kargo_gecmis').insert({ kargo_id: id, durum, not: 'Admin tarafından güncellendi' });
-  toast('Durum güncellendi', 'success'); closeModal('kargo-modal'); 
+  
+  toast('Durum güncellendi', 'success'); 
+  closeModal('kargo-modal'); 
+  
   const activePage = document.querySelector('.page.active')?.id; 
-  if (activePage === 'page-admindashboard') loadAdminDashboard(); else if (activePage === 'page-tumkargolar') loadAdminKargolar();
+  if (activePage === 'page-admindashboard') loadAdminDashboard(); 
+  else if (activePage === 'page-tumkargolar') loadAdminKargolar();
 }
 
 async function openEditModal(id) {
-  closeModal('kargo-modal'); const { data: k } = await sb.from('kargolar').select('*').eq('id', id).single(); editingKargoId = id;
+  closeModal('kargo-modal'); 
+  const { data: k } = await sb.from('kargolar').select('*').eq('id', id).single(); 
+  editingKargoId = id;
+  
   document.getElementById('edit-body').innerHTML = `
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
       <div>
@@ -1221,25 +1213,139 @@ async function openEditModal(id) {
         <input type="number" id="e-ucret" value="${k.ucret||0}" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
       </div>
     </div>
-    <div class="form-group"><label>Açıklama</label><textarea id="e-aciklama" rows="2">${k.aciklama||''}</textarea></div>`;
+    <div class="form-group">
+      <label>Açıklama</label>
+      <textarea id="e-aciklama" rows="2">${k.aciklama||''}</textarea>
+    </div>`;
+    
   document.getElementById('edit-modal').style.display = 'flex';
 }
 
 async function saveEdit() {
-  const updates = { g_adsoyad: document.getElementById('e-g-adsoyad').value.trim(), g_tel: document.getElementById('e-g-tel').value.trim(), g_il: document.getElementById('e-g-il').value.trim(), g_adres: document.getElementById('e-g-adres').value.trim(), a_adsoyad: document.getElementById('e-a-adsoyad').value.trim(), a_tel: document.getElementById('e-a-tel').value.trim(), a_il: document.getElementById('e-a-il').value.trim(), a_adres: document.getElementById('e-a-adres').value.trim(), odeme_tipi: document.getElementById('e-odeme-tipi').value, ucret: document.getElementById('e-odeme-tipi').value === 'evet' ? (parseFloat(document.getElementById('e-ucret').value)||0) : 0, aciklama: document.getElementById('e-aciklama').value.trim(), updated_at: new Date().toISOString() };
-  await sb.from('kargolar').update(updates).eq('id', editingKargoId); toast('Kargo güncellendi', 'success'); closeModal('edit-modal'); const activePage = document.querySelector('.page.active')?.id; if (activePage === 'page-tumkargolar') loadAdminKargolar(); else if (activePage === 'page-kargolarim') loadKargolarim();
+  const updates = { 
+    g_adsoyad: document.getElementById('e-g-adsoyad').value.trim(), 
+    g_tel: document.getElementById('e-g-tel').value.trim(), 
+    g_il: document.getElementById('e-g-il').value.trim(), 
+    g_adres: document.getElementById('e-g-adres').value.trim(), 
+    a_adsoyad: document.getElementById('e-a-adsoyad').value.trim(), 
+    a_tel: document.getElementById('e-a-tel').value.trim(), 
+    a_il: document.getElementById('e-a-il').value.trim(), 
+    a_adres: document.getElementById('e-a-adres').value.trim(), 
+    odeme_tipi: document.getElementById('e-odeme-tipi').value, 
+    ucret: document.getElementById('e-odeme-tipi').value === 'evet' ? (parseFloat(document.getElementById('e-ucret').value)||0) : 0, 
+    aciklama: document.getElementById('e-aciklama').value.trim(), 
+    updated_at: new Date().toISOString() 
+  };
+  
+  await sb.from('kargolar').update(updates).eq('id', editingKargoId); 
+  toast('Kargo güncellendi', 'success'); 
+  closeModal('edit-modal'); 
+  
+  const activePage = document.querySelector('.page.active')?.id; 
+  if (activePage === 'page-tumkargolar') loadAdminKargolar(); 
+  else if (activePage === 'page-kargolarim') loadKargolarim();
 }
 
-function kargoTable(data, isAdmin) { return `<table><thead><tr><th>Takip No</th>${isAdmin ? '<th>Müşteri</th>' : ''}<th>Gönderici</th><th>Alıcı</th><th>Durum</th><th>Ödeme</th><th>Tarih</th><th></th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no">${k.tracking_no}</span></td>${isAdmin ? `<td data-label="Müşteri Hesap" style="font-size:12px;color:var(--text2)">${k.profiles ? k.profiles.first_name+' '+k.profiles.last_name : '—'}</td>` : ''}<td data-label="Gönderici">${k.g_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.g_il||''}</span></td><td data-label="Alıcı">${k.a_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.a_il||''}</span></td><td data-label="Kargo Durumu">${badgeHtml(k.durum)}</td><td data-label="Ödeme Tutarı">${badgeOdeme(k.odeme_durumu)}<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">₺${parseFloat(k.ucret||0).toFixed(2)}</span></td><td data-label="İşlem Tarihi" style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</td><td data-label="İşlem"><button class="action-btn" onclick="showKargoDetail('${k.id}')">Detay</button></td></tr>`).join('')}</tbody></table>`; }
-function kargoTableSmall(data) { return `<table><thead><tr><th>Takip No</th><th>Alıcı</th><th>Durum</th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td><td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td><td data-label="Durum">${badgeHtml(k.durum)}</td></tr>`).join('')}</tbody></table>`; }
-function odemelerTableSmall(data) { return `<table><thead><tr><th>Takip No</th><th>Alıcı</th><th>Tutar</th></tr></thead><tbody>${data.map(k=>`<tr><td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td><td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td><td data-label="Tutar" style="font-family:'DM Mono',monospace;font-size:12px">₺${parseFloat(k.ucret||0).toFixed(2)}</td></tr>`).join('')}</tbody></table>`; }
-function badgeHtml(durum) { const labels = { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }; return `<span class="badge badge-${durum}">${labels[durum]||durum}</span>`; }
-function badgeOdeme(d) { return `<span class="badge badge-${d==='odendi'?'odendi':'bekliyor'}">${d==='odendi'?'Ödendi':'Bekliyor'}</span>`; }
-function durumLabel(d) { return { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }[d] || d; }
-function emptyState(msg) { return `<div class="empty-state"><div class="empty-icon">📦</div><p>${msg}</p></div>`; }
-function fmtDate(d) { return new Date(d).toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric' }); }
-function fmtDateFull(d) { return new Date(d).toLocaleString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }); }
-function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+function kargoTable(data, isAdmin) { 
+  return `
+    <table>
+      <thead>
+        <tr>
+          <th>Takip No</th>
+          ${isAdmin ? '<th>Müşteri</th>' : ''}
+          <th>Gönderici</th>
+          <th>Alıcı</th>
+          <th>Durum</th>
+          <th>Ödeme</th>
+          <th>Tarih</th>
+          <th style="text-align: right;">İşlem</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.map(k=>`
+          <tr>
+            <td data-label="Takip No"><span class="tracking-no">${k.tracking_no}</span></td>
+            ${isAdmin ? `<td data-label="Müşteri Hesap" style="font-size:12px;color:var(--text2)">${k.profiles ? k.profiles.first_name+' '+k.profiles.last_name : '—'}</td>` : ''}
+            <td data-label="Gönderici">${k.g_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.g_il||''}</span></td>
+            <td data-label="Alıcı">${k.a_adsoyad}<br><span style="font-size:11px;color:var(--text3)">${k.a_il||''}</span></td>
+            <td data-label="Kargo Durumu">${badgeHtml(k.durum)}</td>
+            <td data-label="Ödeme Tutarı">${badgeOdeme(k.odeme_durumu)}<br><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text2)">₺${parseFloat(k.ucret||0).toFixed(2)}</span></td>
+            <td data-label="İşlem Tarihi" style="font-size:12px;color:var(--text3)">${fmtDate(k.created_at)}</td>
+            <td data-label="İşlem">
+              <div class="table-actions">
+                <button class="action-btn print-btn-desktop" onclick="printKargoFisi('${k.id}')" title="Fiş Yazdır">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;margin-right:4px;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                  Yazdır
+                </button>
+                <button class="action-btn" onclick="showKargoDetail('${k.id}')">Detay</button>
+              </div>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>`; 
+}
+
+function kargoTableSmall(data) { 
+  return `
+    <table>
+      <thead><tr><th>Takip No</th><th>Alıcı</th><th>Durum</th></tr></thead>
+      <tbody>
+        ${data.map(k=>`
+          <tr>
+            <td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td>
+            <td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td>
+            <td data-label="Durum">${badgeHtml(k.durum)}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>`; 
+}
+
+function odemelerTableSmall(data) { 
+  return `
+    <table>
+      <thead><tr><th>Takip No</th><th>Alıcı</th><th>Tutar</th></tr></thead>
+      <tbody>
+        ${data.map(k=>`
+          <tr>
+            <td data-label="Takip No"><span class="tracking-no" style="font-size:11px">${k.tracking_no}</span></td>
+            <td data-label="Alıcı" style="font-size:12px">${k.a_adsoyad}</td>
+            <td data-label="Tutar" style="font-family:'DM Mono',monospace;font-size:12px">₺${parseFloat(k.ucret||0).toFixed(2)}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>`; 
+}
+
+function badgeHtml(durum) { 
+  const labels = { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }; 
+  return `<span class="badge badge-${durum}">${labels[durum]||durum}</span>`; 
+}
+
+function badgeOdeme(d) { 
+  return `<span class="badge badge-${d==='odendi'?'odendi':'bekliyor'}">${d==='odendi'?'Ödendi':'Bekliyor'}</span>`; 
+}
+
+function durumLabel(d) { 
+  return { beklemede:'Beklemede', teslim:'Teslim Edildi', iptal:'İptal' }[d] || d; 
+}
+
+function emptyState(msg) { 
+  return `<div class="empty-state"><div class="empty-icon">📦</div><p>${msg}</p></div>`; 
+}
+
+function fmtDate(d) { 
+  return new Date(d).toLocaleDateString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric' }); 
+}
+
+function fmtDateFull(d) { 
+  return new Date(d).toLocaleString('tr-TR', { day:'2-digit', month:'2-digit', year:'numeric', hour:'2-digit', minute:'2-digit' }); 
+}
+
+function closeModal(id) { 
+  document.getElementById(id).style.display = 'none'; 
+}
 
 function svgHome() { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`; }
 function svgBox() { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`; }
@@ -1247,22 +1353,120 @@ function svgPlus() { return `<svg viewBox="0 0 24 24" fill="none" stroke="curren
 function svgUsers() { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`; }
 function svgChart() { return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>`; }
 
-function toast(msg, type='') { const el = document.getElementById('toast'); el.textContent = msg; el.className = 'show' + (type ? ' '+type : ''); setTimeout(()=> el.className = '', 3000); }
-['kargo-modal','edit-modal','sql-modal'].forEach(id => { document.getElementById(id)?.addEventListener('click', e => { if (e.target.id === id) closeModal(id); }); });
+function toast(msg, type='') { 
+  const el = document.getElementById('toast'); 
+  el.textContent = msg; 
+  el.className = 'show' + (type ? ' '+type : ''); 
+  setTimeout(()=> el.className = '', 3000); 
+}
+
+['kargo-modal','edit-modal','sql-modal'].forEach(id => { 
+  document.getElementById(id)?.addEventListener('click', e => { 
+    if (e.target.id === id) closeModal(id); 
+  }); 
+});
 
 async function deleteKargo(id) {
-  const onay = confirm('Bu kargoyu silmek istediğinize emin misiniz?'); if (!onay) return;
+  const onay = confirm('Bu kargoyu silmek istediğinize emin misiniz?'); 
+  if (!onay) return;
+  
   const { error } = await sb.from('kargolar').delete().eq('id', id);
-  if (error) { alert('Hata: ' + error.message); return; }
-  toast('Kargo silindi!', 'success'); closeModal('kargo-modal');
+  if (error) { 
+    alert('Hata: ' + error.message); 
+    return; 
+  }
+  
+  toast('Kargo silindi!', 'success'); 
+  closeModal('kargo-modal');
+  
   const activePage = document.querySelector('.page.active')?.id;
-  if (activePage === 'page-kargolarim') loadKargolarim(); else if (activePage === 'page-tumkargolar') loadAdminKargolar(); else if (activePage === 'page-musteridashboard') loadMusteriDashboard();
+  if (activePage === 'page-kargolarim') loadKargolarim(); 
+  else if (activePage === 'page-tumkargolar') loadAdminKargolar(); 
+  else if (activePage === 'page-musteridashboard') loadMusteriDashboard();
 }
 
 async function printKargoFisi(id) {
   const { data: k } = await sb.from('kargolar').select('*').eq('id', id).single();
   const printWindow = window.open('', '_blank', 'width=560,height=794');
-  printWindow.document.write(`<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8"><title>Kargo Fişi - ${k.tracking_no}</title><style>@page{size:A4 portrait;margin:12mm;}*,*::before,*::after{box-sizing:border-box;}body{font-family:'Helvetica Neue','Helvetica','Arial',sans-serif;color:#111;margin:0;padding:0;font-size:10pt;line-height:1.4;}.header-table{width:100%;border-collapse:collapse;margin-bottom:5px;}.logo-text{font-size:24pt;letter-spacing:-0.5px;color:#000;}.logo-text strong{font-weight:900;}.logo-text span{font-weight:300;color:#333;padding-left:2px;}.meta-container{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:20px;}.tracking-number{font-size:12pt;font-weight:bold;color:#333;}.header-meta{font-size:8.5pt;color:#444;text-align:right;}.address-table{width:100%;border-collapse:collapse;margin-bottom:20px;}.address-cell{width:50%;vertical-align:top;border:1px solid #111;padding:12px;}.address-cell.receiver{border-left:none;background-color:#fafafa;}.section-title{font-size:7.5pt;font-weight:bold;text-transform:uppercase;color:#555;border-bottom:1px solid #111;padding-bottom:4px;margin-bottom:6px;}.name-field{font-size:10.5pt;font-weight:bold;margin-bottom:4px;}.address-field{font-size:9pt;color:#222;min-height:40px;}.phone-field{font-weight:bold;margin-top:6px;font-size:9pt;}.notes-box{border:1px dashed #444;padding:10px;font-size:8.5pt;margin-bottom:30px;}.payment-wrapper{border-top:2px solid #000;padding-top:12px;margin-top:20px;}.payment-table{width:100%;border-collapse:collapse;}.payment-info-cell{vertical-align:middle;}.payment-status-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}.payment-status-value{font-size:11pt;font-weight:bold;margin-top:2px;}.payment-amount-cell{text-align:right;vertical-align:middle;}.payment-amount-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}.payment-amount-value{font-size:18pt;font-weight:900;color:#000;}.footer-notice{text-align:center;font-size:7pt;color:#777;margin-top:15px;}</style></head><body><table class="header-table"><tr><td class="logo-text"><strong>EFE</strong><span>KARGO</span></td></tr></table><div class="meta-container"><div class="tracking-number">Takip No: ${k.tracking_no}</div><div class="header-meta">Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>Otomasyon Fişi</div></div><table class="address-table"><tr><td class="address-cell"><div class="section-title">Gönderici</div><div class="name-field">${k.g_adsoyad}</div><div class="address-field">${k.g_adres||'Sistemde Kayıtlı Adres'}<br>${k.g_il||''}</div><div class="phone-field">Tel: ${k.g_tel}</div></td><td class="address-cell receiver"><div class="section-title">Alıcı</div><div class="name-field">${k.a_adsoyad}</div><div class="address-field">${k.a_adres||''}<br><strong>${k.a_il||''}</strong></div><div class="phone-field">Tel: ${k.a_tel||'-'}</div></td></tr></table><div class="notes-box"><strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama||'Belirtilmedi'}</div><div class="payment-wrapper"><table class="payment-table"><tr><td class="payment-info-cell"><div class="payment-status-title">Ödeme Türü / Durumu</div><div class="payment-status-value">${k.odeme_tipi==='evet'?'KAPIDA ÖDEME (TAHSİLATLI)':'ÖDEME YOK (DİREKT TESLİM)'}</div></td><td class="payment-amount-cell">${k.odeme_tipi==='evet'?`<div class="payment-amount-title">Tahsil Edilecek Tutar</div><div class="payment-amount-value">${parseFloat(k.ucret||0).toLocaleString('tr-TR',{minimumFractionDigits:2})} ₺</div>`:''}</td></tr></table><div class="footer-notice">Efe Kargo Lojistik Otomasyon Sistemi</div></div><script>window.onload=function(){window.print();window.close();}<\/script></body></html>`);
+  
+  printWindow.document.write(`
+    <!DOCTYPE html>
+    <html lang="tr">
+    <head>
+      <meta charset="UTF-8">
+      <title>Kargo Fişi - ${k.tracking_no}</title>
+      <style>
+        @page{size:A4 portrait;margin:12mm;}
+        *,*::before,*::after{box-sizing:border-box;}
+        body{font-family:'Helvetica Neue','Helvetica','Arial',sans-serif;color:#111;margin:0;padding:0;font-size:10pt;line-height:1.4;}
+        .header-table{width:100%;border-collapse:collapse;margin-bottom:5px;}
+        .logo-text{font-size:24pt;letter-spacing:-0.5px;color:#000;}
+        .logo-text strong{font-weight:900;}
+        .logo-text span{font-weight:300;color:#333;padding-left:2px;}
+        .meta-container{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:20px;}
+        .tracking-number{font-size:12pt;font-weight:bold;color:#333;}
+        .header-meta{font-size:8.5pt;color:#444;text-align:right;}
+        .address-table{width:100%;border-collapse:collapse;margin-bottom:20px;}
+        .address-cell{width:50%;vertical-align:top;border:1px solid #111;padding:12px;}
+        .address-cell.receiver{border-left:none;background-color:#fafafa;}
+        .section-title{font-size:7.5pt;font-weight:bold;text-transform:uppercase;color:#555;border-bottom:1px solid #111;padding-bottom:4px;margin-bottom:6px;}
+        .name-field{font-size:10.5pt;font-weight:bold;margin-bottom:4px;}
+        .address-field{font-size:9pt;color:#222;min-height:40px;}
+        .phone-field{font-weight:bold;margin-top:6px;font-size:9pt;}
+        .notes-box{border:1px dashed #444;padding:10px;font-size:8.5pt;margin-bottom:30px;}
+        .payment-wrapper{border-top:2px solid #000;padding-top:12px;margin-top:20px;}
+        .payment-table{width:100%;border-collapse:collapse;}
+        .payment-info-cell{vertical-align:middle;}
+        .payment-status-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}
+        .payment-status-value{font-size:11pt;font-weight:bold;margin-top:2px;}
+        .payment-amount-cell{text-align:right;vertical-align:middle;}
+        .payment-amount-title{font-size:8pt;font-weight:bold;text-transform:uppercase;color:#555;}
+        .payment-amount-value{font-size:18pt;font-weight:900;color:#000;}
+        .footer-notice{text-align:center;font-size:7pt;color:#777;margin-top:15px;}
+      </style>
+    </head>
+    <body>
+      <table class="header-table">
+        <tr><td class="logo-text"><strong>EFE</strong><span>KARGO</span></td></tr>
+      </table>
+      <div class="meta-container">
+        <div class="tracking-number">Takip No: ${k.tracking_no}</div>
+        <div class="header-meta">Tarih: ${new Date(k.created_at).toLocaleDateString('tr-TR')}<br>Otomasyon Fişi</div>
+      </div>
+      <table class="address-table">
+        <tr>
+          <td class="address-cell">
+            <div class="section-title">Gönderici</div>
+            <div class="name-field">${k.g_adsoyad}</div>
+            <div class="address-field">${k.g_adres||'Sistemde Kayıtlı Adres'}<br>${k.g_il||''}</div>
+            <div class="phone-field">Tel: ${k.g_tel}</div>
+          </td>
+          <td class="address-cell receiver">
+            <div class="section-title">Alıcı</div>
+            <div class="name-field">${k.a_adsoyad}</div>
+            <div class="address-field">${k.a_adres||''}<br><strong>${k.a_il||''}</strong></div>
+            <div class="phone-field">Tel: ${k.a_tel||'-'}</div>
+          </td>
+        </tr>
+      </table>
+      <div class="notes-box"><strong>Kargo Açıklaması / İçerik:</strong> ${k.aciklama||'Belirtilmedi'}</div>
+      <div class="payment-wrapper">
+        <table class="payment-table">
+          <tr>
+            <td class="payment-info-cell">
+              <div class="payment-status-title">Ödeme Türü / Durumu</div>
+              <div class="payment-status-value">${k.odeme_tipi==='evet'?'KAPIDA ÖDEME (TAHSİLATLI)':'ÖDEME YOK (DİREKT TESLİM)'}</div>
+            </td>
+            <td class="payment-amount-cell">
+              ${k.odeme_tipi==='evet'?`<div class="payment-amount-title">Tahsil Edilecek Tutar</div><div class="payment-amount-value">${parseFloat(k.ucret||0).toLocaleString('tr-TR',{minimumFractionDigits:2})} ₺</div>`:''}
+            </td>
+          </tr>
+        </table>
+        <div class="footer-notice">Efe Kargo Lojistik Otomasyon Sistemi</div>
+      </div>
+      <script>window.onload=function(){window.print();window.close();}<\/script>
+    </body>
+    </html>`);
   printWindow.document.close();
 }
 </script>
