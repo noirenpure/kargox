@@ -628,17 +628,17 @@ tr:hover td { background: var(--bg); }
           </div>
           <div class="detail-section">
             <h4>Kargo Detayları</h4>
-            <div class="form-row">
+             <div class="form-row">
               <div class="form-group">
-                <label>Ödeme Tipi</label>
-                <select id="odeme-tipi">
-                  <option value="gonderici">Gönderici Öder</option>
-                  <option value="alici">Alıcı Öder</option>
+                <label>Ödeme Alınacak mı?</label>
+                <select id="odeme-tipi" onchange="toggleUcret('ucret', this.value)">
+                  <option value="hayir">Hayır</option>
+                  <option value="evet">Evet (Tahsilatlı)</option>
                 </select>
               </div>
-              <div class="form-group">
-                <label>Alınacak Tutar</label>
-                <input type="number" id="ucret" placeholder="0.00" min="0" step="0.01"/>
+              <div class="form-group" id="ucret-kapsayici" style="display: none;">
+                <label>Alınacak Tutar (₺)</label>
+                <input type="number" id="ucret" placeholder="0.00" min="0" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')"/>
               </div>
             </div>
             <div class="form-group"><label>Kargo Açıklaması (opsiyonel)</label><textarea id="aciklama" rows="2" placeholder="İçerik, not..."></textarea></div>
@@ -1061,6 +1061,18 @@ async function getNextTrackingNo() {
   return 'EFE' + siradakiSayi;
 }
 
+// ─── ÖDEME KUTUSUNU GÖSTER/GİZLE ───
+function toggleUcret(inputId, deger) {
+  const kapsayici = document.getElementById(inputId + '-kapsayici');
+  const input = document.getElementById(inputId);
+  if (deger === 'evet') {
+    kapsayici.style.display = 'block';
+  } else {
+    kapsayici.style.display = 'none';
+    input.value = ''; // Kutu gizlenirse içindeki rakamı da sıfırla
+  }
+}
+
 // ─── CREATE KARGO ───
 async function createKargo() {
   try {
@@ -1087,7 +1099,8 @@ async function createKargo() {
       a_il: document.getElementById('a-il').value.trim(),
       a_adres: document.getElementById('a-adres').value.trim(),
       odeme_tipi: document.getElementById('odeme-tipi').value,
-      ucret: parseFloat(document.getElementById('ucret').value) || 0,
+      // Sadece "Evet" seçiliyse ücreti kaydet, "Hayır" ise ücreti zorla 0 yap
+      ucret: document.getElementById('odeme-tipi').value === 'evet' ? parseFloat(document.getElementById('ucret').value) || 0 : 0,
       aciklama: document.getElementById('aciklama').value.trim(),
       durum: 'beklemede',
       odeme_durumu: 'bekliyor',
@@ -1314,11 +1327,11 @@ async function showKargoDetail(id) {
         <div class="detail-item"><label>Adres</label><span>${k.a_adres||'—'}</span></div>
       </div>
     </div>
-    <div class="detail-section">
+     <div class="detail-section">
       <h4>Ödeme</h4>
       <div class="detail-grid">
-        <div class="detail-item"><label>Ödeme Tipi</label><span>${k.odeme_tipi==='gonderici'?'Gönderici Öder':'Alıcı Öder'}</span></div>
-        <div class="detail-item"><label>Ücret</label><span style="font-family:'DM Mono',monospace">₺${parseFloat(k.ucret||0).toFixed(2)}</span></div>
+        <div class="detail-item"><label>Ödeme Durumu</label><span>${k.odeme_tipi==='evet'?'Tahsilatlı (Ödeme Alınacak)':'Ödeme Alınmayacak'}</span></div>
+        <div class="detail-item"><label>Ücret</label><span style="font-family:'DM Mono',monospace">${k.odeme_tipi==='evet' ? '₺'+parseFloat(k.ucret||0).toFixed(2) : '—'}</span></div>
       </div>
     </div>
     ${k.aciklama ? `<div class="detail-section"><h4>Açıklama</h4><p style="font-size:13px;color:var(--text2)">${k.aciklama}</p></div>` : ''}
@@ -1413,13 +1426,16 @@ async function openEditModal(id) {
     </div>
     <div class="form-row">
       <div class="form-group">
-        <label>Ödeme Tipi</label>
-        <select id="e-odeme-tipi">
-          <option value="gonderici" ${k.odeme_tipi==='gonderici'?'selected':''}>Gönderici Öder</option>
-          <option value="alici" ${k.odeme_tipi==='alici'?'selected':''}>Alıcı Öder</option>
+        <label>Ödeme Alınacak mı?</label>
+        <select id="e-odeme-tipi" onchange="toggleUcret('e-ucret', this.value)">
+          <option value="hayir" ${k.odeme_tipi!=='evet'?'selected':''}>Hayır</option>
+          <option value="evet" ${k.odeme_tipi==='evet'?'selected':''}>Evet (Tahsilatlı)</option>
         </select>
       </div>
-      <div class="form-group"><label>Ücret (₺)</label><input type="number" id="e-ucret" value="${k.ucret||0}" step="0.01"></div>
+      <div class="form-group" id="e-ucret-kapsayici" style="display: ${k.odeme_tipi==='evet'?'block':'none'};">
+        <label>Alınacak Tutar (₺)</label>
+        <input type="number" id="e-ucret" value="${k.ucret||0}" step="0.01" oninput="this.value = this.value.replace(/[^0-9.]/g, '')">
+      </div>
     </div>
     <div class="form-group"><label>Açıklama</label><textarea id="e-aciklama" rows="2">${k.aciklama||''}</textarea></div>`;
   document.getElementById('edit-modal').style.display = 'flex';
@@ -1436,7 +1452,7 @@ async function saveEdit() {
     a_il: document.getElementById('e-a-il').value.trim(),
     a_adres: document.getElementById('e-a-adres').value.trim(),
     odeme_tipi: document.getElementById('e-odeme-tipi').value,
-    ucret: parseFloat(document.getElementById('e-ucret').value)||0,
+    ucret: document.getElementById('e-odeme-tipi').value === 'evet' ? (parseFloat(document.getElementById('e-ucret').value)||0) : 0,
     aciklama: document.getElementById('e-aciklama').value.trim(),
     updated_at: new Date().toISOString(),
   };
@@ -1583,7 +1599,10 @@ async function printKargoFisi(id) {
           <div class="header"><h2>KargoNet</h2><div class="barcode-text">*${k.tracking_no}*</div></div>
           <div class="section"><div class="section-title">Gönderici</div><div class="info"><strong>${k.g_adsoyad}</strong></div><div class="info">Tel: ${k.g_tel}</div></div>
           <div class="section"><div class="section-title">Alıcı</div><div class="info"><strong>${k.a_adsoyad}</strong></div><div class="info">Tel: ${k.a_tel || '-'}</div><div class="info">${k.a_il || ''} - ${k.a_adres || ''}</div></div>
-          <div class="footer"><div>${k.odeme_tipi === 'gonderici' ? 'Gönderici Öder' : 'Alıcı Öder'}</div><div>Tutar: ₺${parseFloat(k.ucret || 0).toFixed(2)}</div></div>
+          <div class="footer">
+            <div>${k.odeme_tipi === 'evet' ? 'Tahsilatlı Kargo' : 'Ödeme Yok'}</div>
+            <div>${k.odeme_tipi === 'evet' ? 'Tutar: ₺' + parseFloat(k.ucret || 0).toFixed(2) : ''}</div>
+          </div>
           <div class="date">İşlem Tarihi: ${new Date(k.created_at).toLocaleString('tr-TR')}</div>
         </div>
         <script>window.onload = function() { window.print(); window.close(); }<\/script>
