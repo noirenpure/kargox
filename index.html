@@ -900,7 +900,19 @@ async function checkAuth() {
 
 async function loadProfile(user) {
   currentUser = user;
-  const { data } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  
+  // 1. Önce profili bulmayı dene
+  let { data, error } = await sb.from('profiles').select('*').eq('id', user.id).single();
+  
+  // 2. Eğer zamanlama çakışması (406 hatası) olursa, panik yapma!
+  if (error) {
+    // Arka plandaki kayıt işleminin bitmesi için 1 saniye (1000 milisaniye) bekle
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Ve profili getirmeyi tekrar dene
+    const retry = await sb.from('profiles').select('*').eq('id', user.id).single();
+    data = retry.data;
+  }
+  
   currentProfile = data;
 }
 
