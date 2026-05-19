@@ -218,15 +218,31 @@ tr:hover td { background: var(--bg); }
   .main { margin-left: 0 !important; padding: 80px 1rem 85px 1rem !important; min-height: 100vh; }
   .page-header h1 { font-size: 20px; }
   
-  /* 2. ÜST BAR (Sabit Logo ve ÇIKIŞ Butonu) */
-  .sidebar { background: transparent; border: none; box-shadow: none; z-index: 1000; }
-  .sidebar-logo { display: flex !important; position: fixed; top: 0; left: 0; width: 50%; height: 60px; background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 1rem; z-index: 1000; }
-  .sidebar-user { display: flex !important; position: fixed; top: 0; right: 0; width: 50%; height: 60px; background: var(--surface); border-bottom: 1px solid var(--border); border-top: none; padding: 0 1rem; z-index: 1000; justify-content: flex-end; align-items: center; }
+/* 2. ÜST BAR (Sabit Logo ve ÇIKIŞ Butonu) */
+  .sidebar { width: 0; height: 0; background: transparent; border: none; box-shadow: none; z-index: 1000; pointer-events: none; /* Görünmez kalkanı tamamen deldik */ }
+  .sidebar-logo {
+    display: flex !important; position: fixed; top: 0; left: 0; width: 50%; height: 60px;
+    background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 1rem; z-index: 1000;
+    pointer-events: auto; /* Logoya tıklanabilsin */
+  }
+  .sidebar-user {
+    display: flex !important; position: fixed; top: 0; right: 0; width: 50%; height: 60px;
+    background: var(--surface); border-bottom: 1px solid var(--border); border-top: none; padding: 0 1rem; z-index: 1000; justify-content: flex-end; align-items: center;
+    pointer-events: auto; /* Çıkış butonuna tıklanabilsin */
+  }
   .user-info { display: none; }
-  .logout-btn { width: auto; padding: 7px 14px; background: var(--danger-light); color: var(--danger); border: 1px solid #F7C1C1; font-weight: 600; border-radius: 8px; font-size: 11px; }
+  .logout-btn { 
+    width: auto; padding: 7px 14px; background: var(--danger-light); 
+    color: var(--danger); border: 1px solid #F7C1C1; font-weight: 600; border-radius: 8px; font-size: 11px;
+  }
   
   /* 3. ALT NAVİGASYON BARI */
-  .nav { position: fixed; bottom: 0; left: 0; right: 0; height: 60px; background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 20px rgba(0,0,0,0.08); display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 0; z-index: 1000; }
+  .nav { 
+    position: fixed; bottom: 0; left: 0; right: 0; height: 60px;
+    background: var(--surface); border-top: 1px solid var(--border); box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    display: flex; flex-direction: row; justify-content: space-around; align-items: center; padding: 0; z-index: 1000;
+    pointer-events: auto; /* Alt menülere tıklanabilsin */
+  }
   .nav-section { display: none !important; }
   .nav-item { flex-direction: column; justify-content: center; align-items: center; padding: 6px 0; gap: 4px; font-size: 10px; font-weight: 600; width: 25%; border-radius: 0; color: var(--text3); }
   .nav-item.active { background: transparent; color: var(--accent-mid); }
